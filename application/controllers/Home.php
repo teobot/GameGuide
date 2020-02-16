@@ -24,7 +24,7 @@ class Home extends CI_Controller{
         $userExists = '';
 
         //Load data required for web page in array.
-
+        
 
         // Change this to whatever title you wish.
         $data['title']       = 'Games Reviews';
