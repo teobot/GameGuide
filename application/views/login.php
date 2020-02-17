@@ -1,7 +1,7 @@
 <?php $this->load->view('template/header'); ?>
 
     <div class="container w3-card"><br>
-        <form action="#PageHere" method="post" class="container">
+        <form action="<?php echo base_url("application/controllers/Login.php"); ?>" method="post" class="container">
             <div class="form-group">
                 <label >Username</label>
                 <input name="username" min="0" max="64" type="text" class="form-control">

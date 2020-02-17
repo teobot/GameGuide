@@ -20,6 +20,9 @@ class Login extends CI_Controller{
 
     public function index()
     {
-        $this->load->view('login');
+        $username = $this->input->post('username');
+        $password = $this->input->post('username');
+        $data = [];
+        $this->load->view('login', $data);
     }
 }
