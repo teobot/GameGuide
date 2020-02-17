@@ -23,12 +23,6 @@ _END;
         
     }
     ?>
-
-    <div class="w3-card review-card" style="position: relative; background: url(https://image.tmdb.org/t/p/w200/xq1Ugd62d23K2knRUx6xxuALTZB.jpg) no-repeat center; background-size: cover;">
-        <div style="height:100px;width:100%;background-color:#CD4436;position:absolute;bottom:0;opacity: 0.75;">
-            <h4></h4>
-        </div>
-    </div>
 </div>
 
 <?php $this->load->view('template/footer'); ?>
