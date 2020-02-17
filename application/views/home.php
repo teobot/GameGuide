@@ -1,6 +1,6 @@
 <?php $this->load->view('template/header'); ?>
 
-<div class="container d-flex justify-content-center">
+<div class="container justify-content-between">
     <?php
     foreach ($result as $row)
     {
@@ -11,7 +11,7 @@
 
         echo<<<_END
 
-        <div class="w3-card review-card" style="position: relative; background: url($thisImage) no-repeat center; background-size: cover;">
+        <div class="w3-card review-card animated zoomIn" style="float:left;position: relative; background: url($thisImage) no-repeat center; background-size: cover;">
         
             <div style="height:100px;width:100%;position:absolute;bottom:0;">
                 <div style="height:100%;width:100%;background-color:#CD4436;position:absolute;bottom:0;opacity: 0.75;"></div>

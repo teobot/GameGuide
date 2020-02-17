@@ -1,4 +1,4 @@
-    </body> 
+    </body>
 
 <!--
     <button id="chatButton" class="open-button btn btn-success" onclick="openForm()">Chat</button>
