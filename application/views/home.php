@@ -1,6 +1,6 @@
 <?php $this->load->view('template/header'); ?>
 
-<div class="container d-flex justify-content-between">
+<div class="container d-flex justify-content-center">
     <?php
     foreach ($result as $row)
     {
@@ -10,17 +10,24 @@
         // Look into the image properties library in CodeIgniter for more help on images: 
 
         echo<<<_END
-        <div class="w3-card review-card">
-            <h5>$thisTitle</h5>
-            <img src="$thisImage" class="img-fluid" alt="Responsive image">
+
+        <div class="w3-card review-card" style="position: relative; background: url($thisImage) no-repeat center; background-size: cover;">
+        
+            <div style="height:100px;width:100%;position:absolute;bottom:0;">
+                <div style="height:100%;width:100%;background-color:#CD4436;position:absolute;bottom:0;opacity: 0.75;"></div>
+                <h3 class="text-center" style="color:white;font-size:1.5em;font-weight:900;position:relative;">$thisTitle</h3>
+            </div>
+        
         </div>
 _END;
         
     }
     ?>
 
-    <div class="w3-card review-card">
-        
+    <div class="w3-card review-card" style="position: relative; background: url(https://image.tmdb.org/t/p/w200/xq1Ugd62d23K2knRUx6xxuALTZB.jpg) no-repeat center; background-size: cover;">
+        <div style="height:100px;width:100%;background-color:#CD4436;position:absolute;bottom:0;opacity: 0.75;">
+            <h4></h4>
+        </div>
     </div>
 </div>
 
