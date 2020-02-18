@@ -8,6 +8,39 @@
     </div>
 -->
 
+<!-- Modal -->
+    <div id="globalChat" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chatBoxLabel">Global Chat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="max-height:300px;overflow: auto;">
+                <ul id="textChat" class="list-group list-group-flush">
+                    
+                </ul>
+                </div><br>
+                    <div id="messageBox">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Bonfire:</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="sendComment">Send</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
     <!-- This section needs editing to create the chat system using HTML -->
     <div class="fixed-bottom bg-dark d-flex flex-row justify-content-between align-items-center" style="height:56px;color:white;">
         <div class="p-2 d-flex justify-content-center align-items-center">
@@ -15,11 +48,7 @@
             <h5 style="margin: 0px">Theo Clapperton, 18055445</h5>
         </div>
         <div class="p-2" style="width:200px;">
-            <button id="chatButton" class="open-button btn btn-sm btn-block btn-success" onclick="openForm()">Chat</button>
-            <div class="chat-popup pull-right" style="display:none;" id="myForm">
-                <form id="myform" class="form-container">
-                </form>
-            </div>
+            <button id="chatButton" data-toggle="modal" data-target="#globalChat" class="open-button btn btn-sm btn-block btn-success">Chat</button>
         </div>
     </div>
 

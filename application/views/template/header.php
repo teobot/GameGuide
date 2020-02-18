@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <link rel="stylesheet" href="<?php echo base_url("application/css/style.css"); echo("?" . time()) ?>">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="<?php echo base_url("application/scripts/chat.js") . "?" . time(); ?>"></script>
         <title>18055445-CWK</title>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
