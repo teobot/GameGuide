@@ -1,7 +1,7 @@
 <div class="container" style="margin-bottom:56px;">
         <div class="w3-panel">
                 <h1 style="font-size: 3.25em;font-weight: 900;"><?php echo $review["review_title"]; ?></h1>
-                <h1 class="text-muted" style="font-size: 1.75em;font-weight: normal"><?php echo $review["review_subtitle"]; ?></h1>
+                <h1 class="text-muted" style="font-size: 1.75em;font-weight: normal"><?php echo $review["review_subtitle"]; ?><span class="badge badge-pill badge-danger text-monospace"><?php echo $review["review_rating"]; ?>/10</span></h1>
 
                 <div class="d-flex justify-content-start">
                         <p class="review-tag">By <?php echo $review["review_author"]; ?>, </p>
