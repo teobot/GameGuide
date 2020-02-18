@@ -8,10 +8,10 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <link rel="stylesheet" href="<?php echo base_url("application/css/style.css"); echo("?" . time()) ?>">
-        <title><?php echo $title?></title>
+        <title>18055445-CWK</title>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Games Review</a>
+            <a class="navbar-brand">Games Review</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,10 +21,27 @@
                 </ul>
             </div>
             <span class="navbar-text">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url("index.php/login"); ?>">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url("index.php"); ?>">Register</a></li>
-                </ul>
+                <?php
+                    if($this->input->cookie('username',true)) {
+                        //User is logged In
+                        $username = $this->input->cookie('username',true);
+                        $notyou = base_url("index.php/not-you");
+                        echo<<<_END
+                        <ul class="navbar-nav">
+                            <li class="nav-item w3-card"><div class="nav-link active">Welcome, $username!</div></li>
+                            <li class="nav-item"><small><a class="nav-link text-muted" href="$notyou">Not you?</a></small></li></ul>
+_END;
+                    } else {
+                        //User is not logged In
+                        $login = base_url("index.php/Login");
+                        echo<<<_END
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="$login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.php">Register</a></li>
+                        </ul>
+_END;                        
+                    }
+                ?>
             </span> 
         </nav>
     </head>
@@ -32,5 +49,5 @@
     <?php
     // Manipulate the body CSS colour here.
     ?>
-    <body>
+    <body style="height:100%;margin-bottom:56px;">
         <br>

@@ -13,16 +13,51 @@ class Login extends CI_Controller{
         $this->load->helper('cookie');
 
         // Load in your Models below.
-        $this->load->model('HomeModel');
+        $this->load->model('LoginModel');
         
-        // Consider creating new Models for different functionality.
+    }
+
+    public function notyou() {
+        //DELETE the cookies here
+        delete_cookie('username');
+        redirect('Home', 'refresh');
     }
 
     public function index()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('username');
-        $data = [];
-        $this->load->view('login', $data);
+        if(!$this->input->cookie('username',true)) {
+            //The cookie doesn't exist so they aren't logged in
+            //Have they submitted values to login?
+            if( ($this->input->post('username') !== null) && ($this->input->post('password') !== null) ) {
+                //User has submitted values so we need to see if they are valid
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+                //Submit the values to the database to check for the account: TODO
+                $return = $this->LoginModel->userExists($username, $password);
+                if( $return["exist"] ) {
+                    //The user does exist, we need to set the cookie to keep them logged in  
+                    $this->input->set_cookie(array(
+                        'name'   => 'username',
+                        'value'  => $username,
+                        'expire' => '3600',
+                    ));
+                    redirect('Home', 'refresh');
+                } else {
+                    //Display a message to the view saying there was a error as the details are incorrect
+                    $this->load->view('template/header');
+                    $this->load->view('login', $return);
+                    $this->load->view('template/footer');
+                }
+                //...
+            } else {
+                //User has come to the page but not submitted any details
+                $this->load->view('template/header');
+                $this->load->view('login');
+                $this->load->view('template/footer');
+            }
+        } else {
+            //The cookie does exist so they must be logged in, send them back to the home page
+            redirect('Home', 'refresh');
+        }
     }
 }

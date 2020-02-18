@@ -23,11 +23,6 @@ class Home extends CI_Controller{
         // Check to see if the User exists on the homepage. You will need to change this to look up the existance of a cookie.
         $userExists = '';
 
-        //Load data required for web page in array.
-
-        // Change this to whatever title you wish.
-        $data['title']       = 'Games Reviews';
-
         // Condition checking if the user exists.
         if (!$userExists)
         {
@@ -43,7 +38,9 @@ class Home extends CI_Controller{
         $data['result'] = $this->HomeModel->getGame();
         
         //Load the view and send the data accross.
+        $this->load->view('template/header');
         $this->load->view('home', $data);
+        $this->load->view('template/footer');
     }
 
     public function review($slug = NULL)
