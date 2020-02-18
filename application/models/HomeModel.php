@@ -17,12 +17,6 @@ class HomeModel extends CI_Model{
     //Get the details for a game once it has been clicked on.
     public function getReview($slug = FALSE)
     {
-        if ($slug === FALSE)
-        {
-                $query = $this->db->get('reviews');
-                return $query->result_array();
-        }
-
         $query = $this->db->get_where('reviews', array('slug' => $slug));
         return $query->row_array();
     }
