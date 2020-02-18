@@ -45,10 +45,16 @@ class Home extends CI_Controller{
 
     public function review($slug = NULL)
     {
-        //Get the data from the model based on the slug we have.
-        //Slugs match on to the knowledge around wildcard routes.
-        //More information on slugs can be found here: https://codeigniter.com/user_guide/tutorial/news_section.html
-        
+        $data['review'] = $this->HomeModel->getReview($slug);
+
+        if (empty($data['review']))
+        {
+                show_404();
+        }
+
+        $this->load->view('template/header');
+        $this->load->view('review', $data);
+        $this->load->view('template/footer');
     }
 
     //TODO: Create all other functions as required for further functionality (Comments, Login and so on.)

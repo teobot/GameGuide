@@ -52,5 +52,5 @@ _END;
     <?php
     // Manipulate the body CSS colour here.
     ?>
-    <body style="height:100%;margin-bottom:56px;">
+    <body>
         <br>
