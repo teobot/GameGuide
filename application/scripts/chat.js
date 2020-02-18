@@ -8,9 +8,8 @@ $(document).ready(function() {
         $("#message").get(0).value = "";
     });
 
-
-
     socket.on("server message", function(data) {
-        $("#textChat").append('<li class="list-group-item">'+data+'</li>');
+        $("#textChat").append('<li class="list-group-item animated fadeIn">'+data+'</li>');
     });
+    
 });
