@@ -27,7 +27,7 @@
                     <div id="messageBox">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Bonfire:</span>
+                                <span class="input-group-text" id="basic-addon1"><?php echo $this->input->cookie("username"); ?></span>
                             </div>
                             <input type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
                         </div>

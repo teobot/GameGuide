@@ -4,7 +4,9 @@ $(document).ready(function() {
 
     $( "#sendComment" ).click(function() {
         console.log($("#message").get(0).value);
+        
         socket.emit("client message", $("#message").get(0).value);
+
         $("#message").get(0).value = "";
     });
 

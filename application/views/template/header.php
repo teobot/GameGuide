@@ -25,10 +25,10 @@
             </div>
             <span class="navbar-text">
                 <?php
-                    if($this->input->cookie('username',true)) {
+                    if( $this->input->cookie("username") ) {
                         //User is logged In
-                        $username = $this->input->cookie('username',true);
                         $notyou = base_url("index.php/not-you");
+                        $username = $this->input->cookie("username");
                         echo<<<_END
                         <ul class="navbar-nav">
                             <li class="nav-item w3-card"><div class="nav-link active">Welcome, $username!</div></li>

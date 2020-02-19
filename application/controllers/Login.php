@@ -43,15 +43,15 @@ class Login extends CI_Controller{
                     ));
                     redirect('Home', 'refresh');
                 } else {
-                    //Display a message to the view saying there was a error as the details are incorrect
+                    //Load the view and send the data accross.
                     $this->load->view('template/header');
                     $this->load->view('login', $return);
                     $this->load->view('template/footer');
                 }
                 //...
-            } else {
-                //User has come to the page but not submitted any details
-                $this->load->view('template/header');
+            } else {   
+                //Load the view and send the data accross.
+                $this->load->view('template/header',);
                 $this->load->view('login');
                 $this->load->view('template/footer');
             }
