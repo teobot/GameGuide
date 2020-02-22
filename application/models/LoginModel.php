@@ -14,4 +14,12 @@ class LoginModel extends CI_Model{
         return $return;
     }
 
+    public function userLoggedIn() {
+        if ($this->input->cookie("username")) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
 }

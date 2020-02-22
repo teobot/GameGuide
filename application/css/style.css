@@ -9,3 +9,12 @@
     margin-right: 15px;
     font-weight: 900;
 }
+
+@media (min-width: 576px) {
+
+    .review-card {
+    height:400px;
+    width:250px;
+    margin: 5px 5px 5px 5px;
+}
+}

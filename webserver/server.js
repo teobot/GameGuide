@@ -8,14 +8,16 @@ io.on("connection", function(socket) {
     io.emit("server message", "HELLo and welcome");
 
     socket.on("client message", function(data) {
-
         console.log("Client Message received: " + data);
-
         io.emit("server message", data);
+    });
+
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
     });
     
 });
 
 app.listen(8080, function() {
-    console.log("Server started!");
+    console.log("Server started! listening on localhost:8080");
 });

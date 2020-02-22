@@ -12,7 +12,8 @@ class Home extends CI_Controller{
         $this->load->helper('html');
         $this->load->helper('cookie');
         // Load in your Models below.
-        $this->load->model('HomeModel');  
+        $this->load->model('HomeModel');
+        $this->load->model('LoginModel');
     }
 
     public function index()
@@ -28,7 +29,17 @@ class Home extends CI_Controller{
 
     public function review($slug = NULL)
     {
+        //LOOK FOR THE USERS COMMIT INFORMATION AND PUSH IT TO THE MODEL
+        if ($this->input->post("comment") && $this->input->cookie("username")) {
+            $user_comment = $this->input->post("comment");
+            $username = $this->input->cookie("username");
+            $location_slug = $slug;
+            $this->HomeModel->postComment($user_comment, $username, $location_slug);
+        }
+
         $data['review'] = $this->HomeModel->getReview($slug);
+        $data['comments'] = $this->HomeModel->getComments($slug);
+        $data['loggedIn'] = $this->LoginModel->userLoggedIn();
 
         if (empty($data['review']))
         {

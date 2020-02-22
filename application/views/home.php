@@ -1,5 +1,5 @@
 
-<div class="container d-flex justify-content-center align-items-center card-group" style="margin-bottom:56px;">
+<div class="container card-group justify-content-center" style="margin-bottom:56px;">
     <?php
     foreach ($result as $row)
     {
