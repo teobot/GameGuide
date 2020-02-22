@@ -1,4 +1,9 @@
 <div class="container w3-card"><br>
+    <?php
+        if(!$exists) {
+            echo $err;
+        }
+    ?>
     <form action="" method="post" class="container">
         <div class="form-group">
             <label >Username</label>

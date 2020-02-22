@@ -43,14 +43,14 @@ class Login extends CI_Controller{
                     ));
                     redirect('Home', 'refresh');
                 } else {
-                    //Load the view and send the data accross.
+                    //The users doesn't exist so send them back.
                     $this->load->view('template/header');
                     $this->load->view('login', $return);
                     $this->load->view('template/footer');
                 }
                 //...
             } else {   
-                //Load the view and send the data accross.
+                //User hasn't tried to login so give them the login page!
                 $this->load->view('template/header',);
                 $this->load->view('login');
                 $this->load->view('template/footer');
