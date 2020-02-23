@@ -1,10 +1,22 @@
 var app = new Vue({
     // Add the id here.
-    el: '#',
+    el: '#commentSection',
     data: {
-		// Create your data here.
-    },    
+      heading:"test",
+      comments:[]
+    }, 
+    created() {
+      this.getComments();
+    },   
     methods: {
-    //    Add your methods here.       
+      getComments:function()
+      {
+        var pathArray = window.location.pathname.split('/');
+        $.get("http://localhost/PHPFrameworks/index.php/getComments",{"slug":pathArray[4]}, function(data){
+          console.log(data);
+          app.comments = data;
+        });
+        
+      },
     }
 });

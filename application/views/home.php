@@ -1,5 +1,6 @@
 
-<div class="container card-group justify-content-center" style="margin-bottom:56px;">
+<div class="container">
+<div class="row justify-content-center" style="margin-bottom:56px;">
     <?php
     foreach ($result as $row)
     {
@@ -24,4 +25,5 @@ _END;
         
     }
     ?>
+</div>
 </div><br>

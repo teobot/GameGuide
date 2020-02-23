@@ -28,6 +28,12 @@ class Home extends CI_Controller{
         $this->load->view('template/footer');
     }
 
+    public function get_Comments() {
+        $data = $this->CommentModel->getComments($this->input->get("slug"));
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
+
     public function review($slug = NULL)
     {
         //If the user has tried to comment then send the data to be inserted
@@ -40,7 +46,6 @@ class Home extends CI_Controller{
         }
 
         $data['review'] = $this->HomeModel->getReview($slug);
-        $data['comments'] = $this->CommentModel->getComments($slug);
         $data['loggedIn'] = $this->LoginModel->userLoggedIn();
 
         if (empty($data['review']))

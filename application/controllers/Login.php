@@ -60,4 +60,11 @@ class Login extends CI_Controller{
             redirect('Home', 'refresh');
         }
     }
+
+    public function register() {
+        $this->load->view('template/header',);
+        $this->load->view('register');
+        $this->load->view('template/footer');
+    }
+
 }

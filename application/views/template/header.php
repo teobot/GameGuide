@@ -37,10 +37,11 @@ _END;
                     } else {
                         //User is not logged In
                         $login = base_url("index.php/Login");
+                        $register = base_url("index.php/register");
                         echo<<<_END
                         <ul class="navbar-nav">
                             <li class="nav-item"><a class="nav-link" href="$login">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="index.php">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="$register">Register</a></li>
                         </ul>
 _END;                        
                     }

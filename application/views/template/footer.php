@@ -1,13 +1,5 @@
     </body>
 
-<!--
-    <button id="chatButton" class="open-button btn btn-success" onclick="openForm()">Chat</button>
-    <div class="chat-popup pull-right" id="myForm">
-        <form id="myform" class="form-container">
-        </form>
-    </div>
--->
-
 <!-- Modal -->
     <div id="globalChat" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -62,5 +54,5 @@
     </div>
 
 <!-- Load in your custom scripts -->
-
+<script src="<?php echo base_url("application/scripts/CustomVue.js"); ?>"></script>
 </html>
