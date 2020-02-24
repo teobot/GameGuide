@@ -53,22 +53,49 @@ class LoginModel extends CI_Model{
         $query = $this->db->query("SELECT username FROM users WHERE username = '$username'");
         if(empty($query->result())) {
             $return["exist"] = FALSE;
-            $return["err"] = '<div class="alert alert-danger" role="alert">Failed: Username or password is incorrect!</div>';
         } else {
+            $return["err"] = '<div class="alert alert-danger" role="alert">Failed: Username or password is incorrect!</div>';
             $return["exist"] = TRUE;
         }
         return $return;
     }
 
     public function updateUserDetails($username, $password, $profile_image, $user_id) {
-        $data = array(
-            'username' => $username,
-            'password' => $password,
-            'profile_image' => $profile_image
-        );
-    
-        $this->db->where('user_id', $user_id);
-        $this->db->update('users', $data);
+
+        $usernameTaken = $this->usernameTaken($username);
+
+        if($username===$this->input->cookie("username")) 
+        {
+            //Username is the same so just update the password and profile_image
+            $data = array(
+                'password' => $password,
+                'profile_image' => $profile_image
+            );
+            $this->db->where('user_id', $user_id);
+            $this->db->update('users', $data);
+            $return["reason"] = '<div class="alert alert-success" role="alert">Successfully update account!</div>';
+            $return["success"] = TRUE;
+            return $return;
+        } else {
+            //Username is different so must have been changed, we need to update the all information instead
+            if($usernameTaken["exist"]) {
+                //Username is taken
+                $return["success"] = FALSE;
+                $return["reason"] = '<div class="alert alert-danger" role="alert">Username is taken! Please enter a new username.</div>';
+            } else {
+                //Username is not taken
+                $data = array(
+                    'username' => $username,
+                    'password' => $password,
+                    'profile_image' => $profile_image
+                );
+                $this->db->where('user_id', $user_id);
+                $this->db->update('users', $data);
+                $return["reason"] = '<div class="alert alert-success" role="alert">Successfully update account!</div>';
+                $return["success"] = TRUE;
+            }
+            return $return;
+        }
     }
 
 }

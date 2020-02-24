@@ -40,9 +40,9 @@ class Home extends CI_Controller{
         if ($this->input->post("comment") && $this->input->cookie("username")) {
             
             $user_comment = $this->input->post("comment");
-            $username = $this->input->cookie("username");
+            $user_id = $this->input->cookie("user_id");
             $location_slug = $slug;
-            $this->CommentModel->postComment($user_comment, $username, $location_slug);
+            $this->CommentModel->postComment($user_comment, $user_id, $location_slug);
         }
 
         $data['review'] = $this->HomeModel->getReview($slug);

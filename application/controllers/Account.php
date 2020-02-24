@@ -24,7 +24,7 @@ class Account extends CI_Controller{
             //Get the current information and insert
             $user_id = $this->input->cookie("user_id");
             $userInfo = $this->LoginModel->getAccount($user_id);
-            
+            $userInfo["err"] = "";
             $this->load->view('template/header',);
             $this->load->view('account', $userInfo);
             $this->load->view('template/footer');
@@ -44,27 +44,34 @@ class Account extends CI_Controller{
                 //User has submitted data to be updated to their account
                 $username = $this->input->post("username");
                 $password  = $this->input->post("password");
-
                 $profile_image  = $this->input->post("profile_image");
+
                 $profile_image_selection = array("/default.jpg", "/mmuDark.jpg", "/mmu.jpg");
-                $this->LoginModel->updateUserDetails($username,$password,$profile_image_selection[$profile_image], $this->input->cookie("user_id") );
-                //Succesfully updated now reset the cookies and send them back to the account update page
-                $this->input->set_cookie(array(
-                    'name'   => 'username',
-                    'value'  => $username,
-                    'expire' => '3600',
-                ));
-                $this->input->set_cookie(array(
-                    'name'   => 'password',
-                    'value'  => $password,
-                    'expire' => '3600',
-                ));
-                redirect('home', 'refresh');
+                $update = $this->LoginModel->updateUserDetails($username,$password,$profile_image_selection[$profile_image], $this->input->cookie("user_id") );
+
+                if($update["success"]) {
+                    //Succesfully updated now reset the cookies and send them back to the account update page
+                    $this->input->set_cookie(array(
+                        'name'   => 'username',
+                        'value'  => $username,
+                        'expire' => '3600',
+                    ));
+                    redirect('account', 'refresh');
+                } else {
+                    //The update has failed
+                    $userInfo["err"] = $update["reason"];
+                    $userInfo["username"] = $this->input->cookie("username");
+                    $userInfo["password"] = $this->LoginModel->getAccount($this->input->cookie("user_id"))["password"];
+                    $this->load->view('template/header',);
+                    $this->load->view('account', $userInfo);
+                    $this->load->view('template/footer');
+                }
+
             } else {
                 //User has not submitted the correct data
                 $userInfo["err"] = '<div class="alert alert-danger" role="alert">You must have a username and password!</div>';
                 $userInfo["username"] = $this->input->cookie("username");
-                $userInfo["password"] = $this->input->cookie("password");
+                $userInfo["password"] = $this->LoginModel->getAccount($this->input->cookie("user_id"))["password"];
                 $this->load->view('template/header',);
                 $this->load->view('account', $userInfo);
                 $this->load->view('template/footer');
