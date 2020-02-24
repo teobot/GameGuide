@@ -22,9 +22,8 @@ class Account extends CI_Controller{
         if($this->LoginModel->userLoggedIn()) {
             //User is logged in so let them view and update
             //Get the current information and insert
-            $username = $this->input->cookie("username");
-            $password = $this->input->cookie("password");
-            $userInfo = $this->LoginModel->userExists($username,$password);
+            $user_id = $this->input->cookie("user_id");
+            $userInfo = $this->LoginModel->getAccount($user_id);
             
             $this->load->view('template/header',);
             $this->load->view('account', $userInfo);
@@ -45,10 +44,10 @@ class Account extends CI_Controller{
                 //User has submitted data to be updated to their account
                 $username = $this->input->post("username");
                 $password  = $this->input->post("password");
-                $userData = $this->LoginModel->userExists($this->input->cookie("username"), $this->input->cookie("password"));
+
                 $profile_image  = $this->input->post("profile_image");
                 $profile_image_selection = array("/default.jpg", "/mmuDark.jpg", "/mmu.jpg");
-                $this->LoginModel->updateUserDetails($username,$password,$profile_image_selection[$profile_image], $userData["user_id"] );
+                $this->LoginModel->updateUserDetails($username,$password,$profile_image_selection[$profile_image], $this->input->cookie("user_id") );
                 //Succesfully updated now reset the cookies and send them back to the account update page
                 $this->input->set_cookie(array(
                     'name'   => 'username',

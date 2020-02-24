@@ -25,21 +25,21 @@
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
                         <input type="radio" name="profile_image" value="0" checked>
-                        <img style="height:25px;width:25px;" src="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg">
+                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/default.jpg")?>">
                     </label>
                 </div>
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
                         <input type="radio" name="profile_image" value="1">
-                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/mmuDark.jpg")?>">
+                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/mmuDark.jpg")?>">
                     </label>
                 </div>
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
                         <input type="radio" name="profile_image" value="2">
-                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/mmu.jpg")?>">
+                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/mmu.jpg")?>">
                     </label>
                 </div>
                 

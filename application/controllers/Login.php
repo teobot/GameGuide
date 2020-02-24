@@ -38,12 +38,12 @@ class Login extends CI_Controller{
                     //The user does exist, we need to set the cookie to keep them logged in  
                     $this->input->set_cookie(array(
                         'name'   => 'username',
-                        'value'  => $username,
+                        'value'  => $return["username"],
                         'expire' => '3600',
                     ));
                     $this->input->set_cookie(array(
-                        'name'   => 'password',
-                        'value'  => $password,
+                        'name'   => 'user_id',
+                        'value'  => $return["user_id"],
                         'expire' => '3600',
                     ));
                     redirect('Home', 'refresh');
@@ -83,12 +83,12 @@ class Login extends CI_Controller{
                         //The user does exist, we need to set the cookie to keep them logged in  
                         $this->input->set_cookie(array(
                             'name'   => 'username',
-                            'value'  => $username,
+                            'value'  => $return["username"],
                             'expire' => '3600',
                         ));
                         $this->input->set_cookie(array(
-                            'name'   => 'password',
-                            'value'  => $password,
+                            'name'   => 'user_id',
+                            'value'  => $return["user_id"],
                             'expire' => '3600',
                         ));
                         redirect('Home', 'refresh');

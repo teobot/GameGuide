@@ -12,16 +12,13 @@ class LoginModel extends CI_Model{
         $result = $query->result();
         if(empty($result)) {
             $return["exist"] = FALSE;
-            $return["data"] = '';
             $return["err"] = '<div class="alert alert-danger" role="alert">Failed: Username or password is incorrect!</div>';
         } else {
             $return["exist"] = TRUE;
             $return["err"] = "";
             $return["username"] = $username;
-            $return["password"] = $password;
             $return["user_id"] = $result[0]->user_id;
         }
-
         return $return;
     }
 
@@ -41,6 +38,15 @@ class LoginModel extends CI_Model{
             'account_type'=>""
         );
         $this->db->insert('users',$data);
+    }
+
+    public function getAccount($user_id) {
+        $query = $this->db->query("SELECT username,password,profile_image FROM users WHERE user_id = '$user_id'");
+        $result = $query->result();
+        $return["username"] = $result[0]->username;
+        $return["password"] = $result[0]->password;
+        $return["profile_image"] = $result[0]->profile_image;
+        return $return;
     }
 
     public function usernameTaken($username) {
