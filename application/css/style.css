@@ -10,11 +10,27 @@
     font-weight: 900;
 }
 
-@media (min-width: 576px) {
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  [type=radio] + img {
+    cursor: pointer;
+  }
+  
+  /* CHECKED STYLES */
+  [type=radio]:checked + img {
+    outline: 2px solid firebrick;
+  }
 
-    .review-card {
-    height:400px;
-    width:250px;
-    margin: 5px 5px 5px 5px;
-}
-}
+
+  .comment-profile-image {
+    height:48px;
+    width:48px;
+    background-size:cover;
+    margin-right:5px;
+  }

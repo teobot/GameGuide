@@ -19,7 +19,8 @@ class CommentModel extends CI_Model{
             //echo($comment->username);
             $comments[] = (object) array(
                 'username' => $comment->username,
-                'message' => $comment->comment_text, 
+                'message' => $comment->comment_text,
+                'profile_image' => $comment->profile_image,
                 'admin' => $comment->account_type,
             );
         }

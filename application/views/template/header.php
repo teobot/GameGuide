@@ -29,8 +29,10 @@
                         //User is logged In
                         $notyou = base_url("index.php/not-you");
                         $username = $this->input->cookie("username");
+                        $account = base_url("index.php/account");
                         echo<<<_END
                         <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="$account">My Account</a></li>
                             <li class="nav-item w3-card"><div class="nav-link active">Welcome, $username!</div></li>
                             <li class="nav-item"><small><a class="nav-link text-muted" href="$notyou">Not you?</a></small></li></ul>
 _END;

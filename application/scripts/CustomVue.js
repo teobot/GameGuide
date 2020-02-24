@@ -2,7 +2,6 @@ var app = new Vue({
     // Add the id here.
     el: '#commentSection',
     data: {
-      heading:"test",
       comments:[]
     }, 
     created() {

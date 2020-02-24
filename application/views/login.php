@@ -1,8 +1,7 @@
 <div class="container w3-card"><br>
+    <h1 class="display-4">Login</h1>
     <?php
-        if(!$exists) {
-            echo $err;
-        }
+        echo $err;
     ?>
     <form action="" method="post" class="container">
         <div class="form-group">

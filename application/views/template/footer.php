@@ -52,7 +52,6 @@
             <button id="chatButton" data-toggle="modal" data-target="#globalChat" class="open-button btn btn-sm btn-block btn-success">Chat</button>
         </div>
     </div>
-
 <!-- Load in your custom scripts -->
 <script src="<?php echo base_url("application/scripts/CustomVue.js"); ?>"></script>
 </html>

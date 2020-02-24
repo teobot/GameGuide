@@ -25,7 +25,7 @@ class Login extends CI_Controller{
 
     public function index()
     {
-        if(!$this->input->cookie('username',true)) {
+        if(!$this->LoginModel->userLoggedIn()) {
             //The cookie doesn't exist so they aren't logged in
             //Have they submitted values to login?
             if( ($this->input->post('username') !== null) && ($this->input->post('password') !== null) ) {
@@ -39,6 +39,11 @@ class Login extends CI_Controller{
                     $this->input->set_cookie(array(
                         'name'   => 'username',
                         'value'  => $username,
+                        'expire' => '3600',
+                    ));
+                    $this->input->set_cookie(array(
+                        'name'   => 'password',
+                        'value'  => $password,
                         'expire' => '3600',
                     ));
                     redirect('Home', 'refresh');
@@ -62,9 +67,54 @@ class Login extends CI_Controller{
     }
 
     public function register() {
-        $this->load->view('template/header',);
-        $this->load->view('register');
-        $this->load->view('template/footer');
+        if(!$this->LoginModel->userLoggedIn()) {
+            //User isn't logged in so check for posted data otherwise give them the register screen
+            if( ($this->input->post('username') !== null) && ($this->input->post('password') !== null) ) {
+                //The user isn't logged in and has also filled the form out and submitted
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+                $userExists = $this->LoginModel->usernameTaken($username, $password);
+                if(!$userExists["exist"]) {
+                    //Username is free so they can have it,
+                    //Insert the data into the users table and log the user in before returning to home
+                    $this->LoginModel->insertNewUser($username, $password);
+                    $return = $this->LoginModel->userExists($username, $password);
+                    if( $return["exist"] ) {
+                        //The user does exist, we need to set the cookie to keep them logged in  
+                        $this->input->set_cookie(array(
+                            'name'   => 'username',
+                            'value'  => $username,
+                            'expire' => '3600',
+                        ));
+                        $this->input->set_cookie(array(
+                            'name'   => 'password',
+                            'value'  => $password,
+                            'expire' => '3600',
+                        ));
+                        redirect('Home', 'refresh');
+                    } else {
+                        //The users doesn't exist so send them back.
+                        $this->load->view('template/header');
+                        $this->load->view('login', $return);
+                        $this->load->view('template/footer');
+                    }    
+                } else {
+                    //Username is taken so load the page with a err message
+                    $data["err"] = '<div class="alert alert-danger" role="alert">Username is taken!</div>';
+                    $this->load->view('template/header',);
+                    $this->load->view('register', $data);
+                    $this->load->view('template/footer');
+                }
+            } else {
+                //The users isn't logged in and hasn't submitted any data so load the form up
+                $this->load->view('template/header',);
+                $this->load->view('register');
+                $this->load->view('template/footer');
+            }
+        } else {
+            //The cookie exists so they must be logged in already
+            redirect('Home', 'refresh');
+        } 
     }
 
 }
