@@ -14,6 +14,7 @@ class Account extends CI_Controller{
 
         // Load in your Models below.
         $this->load->model('LoginModel');
+        $this->load->model('UserAccount');
         
     }
 
@@ -24,6 +25,9 @@ class Account extends CI_Controller{
             //Get the current information and insert
             $user_id = $this->input->cookie("user_id");
             $userInfo = $this->LoginModel->getAccount($user_id);
+            if($this->UserAccount->isUserAdmin($this->input->cookie("user_id"))) {
+                $userInfo["adminChecked"] = "checked-active";
+            }
             $userInfo["err"] = "";
             $this->load->view('template/header',);
             $this->load->view('account', $userInfo);
@@ -84,4 +88,12 @@ class Account extends CI_Controller{
             $this->load->view('template/footer');
         }
     }
+
+    public function setAdmin()
+    {
+        $accountType = $this->input->post("accountType");
+        echo $accountType;
+        $this->UserAccount->setAccountType($this->input->cookie('user_id'),$accountType);
+    }
+
 }

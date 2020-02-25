@@ -24,7 +24,7 @@
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="0" checked>
+                        <input type="radio" name="profile_image" value="0">
                         <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/default.jpg")?>">
                     </label>
                 </div>
@@ -43,9 +43,26 @@
                     </label>
                 </div>
                 
-            
             </div><br>
         </div>
+
+        <div class="w3-card m-2"><br>
+            <div class="container">
+
+                <div class="custom-control custom-switch m-1">
+                    <input type="checkbox" class="custom-control-input <?php echo $adminChecked;?>" id="admin_switch">
+                    <label class="custom-control-label active" for="admin_switch">Administration</label>
+                </div>
+
+                <div class="custom-control custom-switch m-1">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                    <label class="custom-control-label" for="customSwitch2">Dark Mode</label>
+                </div>
+
+            </div><br>
+        </div>
+
+
 
 
     </form>   

@@ -61,5 +61,6 @@ $route['getComments'] = 'Home/get_Comments';
 $route['account'] = 'Account/index';
 $route['register'] = 'Login/register';
 $route['account/update-details'] = 'Account/updateAccount';
+$route["setAdmin"] = "Account/setAdmin";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -20,6 +20,7 @@ class Login extends CI_Controller{
     public function notyou() {
         //DELETE the cookies here
         delete_cookie('username');
+        delete_cookie('user_id');
         redirect('Home', 'refresh');
     }
 
