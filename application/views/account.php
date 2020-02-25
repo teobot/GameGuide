@@ -4,8 +4,8 @@
 
     <div class="row justify-content-center" style="margin-bottom:56px;">
 
-        <form action="<?php echo base_url("index.php/account/update-details");?>" method="post">
-            <div class="w3-card m-2"><br>
+        <form class="w3-card m-2" action="<?php echo base_url("index.php/account/update-details");?>" method="post">
+            <div class=""><br>
                 <div class="container">
                     <div class="form-group">
                         <label>Username</label>
@@ -22,25 +22,25 @@
         </form>
 
         <div class="w3-card m-2"><br>
-            <div class="container" id="profile_image_sele">
+            <div class="container" id="profile_image_selection">
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="0">
+                        <input type="radio" name="profile_image" value="/default.jpg">
                         <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/default.jpg")?>">
                     </label>
                 </div>
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="1">
+                        <input type="radio" name="profile_image" value="/mmuDark.jpg">
                         <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/mmuDark.jpg")?>">
                     </label>
                 </div>
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="2">
+                        <input type="radio" name="profile_image" value="/mmu.jpg">
                         <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/mmu.jpg")?>">
                     </label>
                 </div>

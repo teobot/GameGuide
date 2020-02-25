@@ -25,8 +25,11 @@ class Account extends CI_Controller{
             //Get the current information and insert
             $user_id = $this->input->cookie("user_id");
             $userInfo = $this->LoginModel->getAccount($user_id);
+
             if($this->UserAccount->isUserAdmin($this->input->cookie("user_id"))) {
                 $userInfo["adminChecked"] = "checked-active";
+            } else {
+                $userInfo["adminChecked"] = "";
             }
             $userInfo["err"] = "";
             $this->load->view('template/header',);
@@ -63,7 +66,12 @@ class Account extends CI_Controller{
                     //The update has failed
                     $userInfo["err"] = $update["reason"];
                     $userInfo["username"] = $this->input->cookie("username");
-                    $userInfo["password"] = $this->LoginModel->getAccount($this->input->cookie("user_id"))["password"];
+                    $userInfo["password"] = $this->LoginModel->getAccount($this->input->cookie("user_id"))["password"];                     
+                    if($this->UserAccount->isUserAdmin($this->input->cookie("user_id"))) {
+                        $userInfo["adminChecked"] = "checked-active";
+                    } else {
+                        $userInfo["adminChecked"] = "";
+                    }
                     $this->load->view('template/header',);
                     $this->load->view('account', $userInfo);
                     $this->load->view('template/footer');
