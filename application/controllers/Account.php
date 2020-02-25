@@ -44,14 +44,12 @@ class Account extends CI_Controller{
     public function updateAccount() {
         //Check if the values are valid then send to the model for update,
          if($this->LoginModel->userLoggedIn()) {
-            if( ($this->input->post('username') !== "") && ($this->input->post('password') !== "") && ($this->input->post('profile_image') !== "") ) {
+            if( ($this->input->post('username') !== "") && ($this->input->post('password') !== "") ) {
                 //User has submitted data to be updated to their account
                 $username = $this->input->post("username");
                 $password  = $this->input->post("password");
-                $profile_image  = $this->input->post("profile_image");
 
-                $profile_image_selection = array("/default.jpg", "/mmuDark.jpg", "/mmu.jpg");
-                $update = $this->LoginModel->updateUserDetails($username,$password,$profile_image_selection[$profile_image], $this->input->cookie("user_id") );
+                $update = $this->LoginModel->updateUserDetails($username,$password, $this->input->cookie("user_id") );
 
                 if($update["success"]) {
                     //Succesfully updated now reset the cookies and send them back to the account update page

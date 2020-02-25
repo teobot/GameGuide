@@ -2,25 +2,27 @@
     <h1 class="display-4 text-center">Account Settings</h1>
     <?php echo $err;?>
 
-    <form class="row justify-content-center" style="margin-bottom:56px;" action="<?php echo base_url("index.php/account/update-details");?>" method="post">
+    <div class="row justify-content-center" style="margin-bottom:56px;">
+
+        <form action="<?php echo base_url("index.php/account/update-details");?>" method="post">
+            <div class="w3-card m-2"><br>
+                <div class="container">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" min="1" max="128" class="form-control" name="username" value="<?php echo $username;?>">
+                        <small id="usernameHelp" class="form-text text-muted">This is your display name, Please make it unique!</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" min="1" max="128" class="form-control" name="password" value="<?php echo $password;?>" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div><br>
+            </div>
+        </form>
 
         <div class="w3-card m-2"><br>
-            <div class="container">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" min="1" max="128" class="form-control" name="username" value="<?php echo $username;?>">
-                    <small id="usernameHelp" class="form-text text-muted">This is your display name, Please make it unique!</small>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" min="1" max="128" class="form-control" name="password" value="<?php echo $password;?>" >
-                </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div><br>
-        </div>
-
-        <div class="w3-card m-2"><br>
-            <div class="container">
+            <div class="container" id="profile_image_sele">
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
@@ -65,6 +67,6 @@
 
 
 
-    </form>   
+    </div>   
     <br>
 </div>

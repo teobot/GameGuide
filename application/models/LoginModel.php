@@ -43,9 +43,14 @@ class LoginModel extends CI_Model{
     public function getAccount($user_id) {
         $query = $this->db->query("SELECT username,password,profile_image FROM users WHERE user_id = '$user_id'");
         $result = $query->result();
-        $return["username"] = $result[0]->username;
-        $return["password"] = $result[0]->password;
-        $return["profile_image"] = $result[0]->profile_image;
+        if(empty($result)) {
+            $return["failed"] = TRUE;
+        } else {
+            $return["failed"] = FALSE;
+            $return["username"] = $result[0]->username;
+            $return["password"] = $result[0]->password;
+            $return["profile_image"] = $result[0]->profile_image;
+        }
         return $return;
     }
 
@@ -60,7 +65,7 @@ class LoginModel extends CI_Model{
         return $return;
     }
 
-    public function updateUserDetails($username, $password, $profile_image, $user_id) {
+    public function updateUserDetails($username, $password, $user_id) {
 
         $usernameTaken = $this->usernameTaken($username);
 
@@ -69,7 +74,6 @@ class LoginModel extends CI_Model{
             //Username is the same so just update the password and profile_image
             $data = array(
                 'password' => $password,
-                'profile_image' => $profile_image
             );
             $this->db->where('user_id', $user_id);
             $this->db->update('users', $data);
@@ -87,7 +91,6 @@ class LoginModel extends CI_Model{
                 $data = array(
                     'username' => $username,
                     'password' => $password,
-                    'profile_image' => $profile_image
                 );
                 $this->db->where('user_id', $user_id);
                 $this->db->update('users', $data);

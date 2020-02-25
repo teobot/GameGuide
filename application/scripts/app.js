@@ -3,7 +3,6 @@ $( document ).ready(function() {
 });
 
 $('#admin_switch').click(function() {
-
     if ($(this).is(':checked')) {
         $.post("http://localhost/PHPFrameworks/index.php/setAdmin", {accountType: "admin"})
         .done(function( data ) {
@@ -14,6 +13,10 @@ $('#admin_switch').click(function() {
         .done(function( data ) {
             console.log( "Data Loaded: " + data );
         });
-    }
-    
+    } 
+});
+
+$('#profile_image_selection').click(function() {
+    console.log(this);
+
 });
