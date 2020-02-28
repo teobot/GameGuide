@@ -102,4 +102,11 @@ class Account extends CI_Controller{
         $this->UserAccount->setAccountType($this->input->cookie('user_id'),$accountType);
     }
 
+    public function setProfileImage()
+    {
+        $profileImage = $this->input->post("image");
+        echo $profileImage;
+        $this->UserAccount->setProfileImage($this->input->cookie('user_id'),$profileImage);
+    }
+
 }

@@ -16,7 +16,12 @@ $('#admin_switch').click(function() {
     } 
 });
 
-$('#profile_image_selection').click(function() {
-    console.log(this);
-
+$('.profile-image-selection').click(function() {
+    console.log();
+    //Update the profile image and click the checkbox
+    $.post("http://localhost/PHPFrameworks/index.php/setProfileImage", {image: this.value})
+    .done(function( data ) {
+        console.log( "Data Loaded: " + data );
+        $('#changes').prepend('<div class="text-center alert-success m-1"><small>Profile Image Updated!</small></div>')
+    });
 });

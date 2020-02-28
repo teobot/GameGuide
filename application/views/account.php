@@ -21,27 +21,13 @@
             </div>
         </form>
 
-        <div class="w3-card m-2"><br>
-            <div class="container" id="profile_image_selection">
+        <div class="w3-card m-2" id="profile_image_selection"><br>
+            <div class="container" v-for="image in images">
 
                 <div class="m-1">
                     <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="/default.jpg">
-                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/default.jpg")?>">
-                    </label>
-                </div>
-
-                <div class="m-1">
-                    <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="/mmuDark.jpg">
-                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/mmuDark.jpg")?>">
-                    </label>
-                </div>
-
-                <div class="m-1">
-                    <label style="height:25px;width:25px;">
-                        <input type="radio" name="profile_image" value="/mmu.jpg">
-                        <img style="height:25px;width:25px;" src="<?php echo base_url("application/images/profile_images/mmu.jpg")?>">
+                        <input class="profile-image-selection" type="radio" name="profile_image" :value="image">
+                        <img style="height:25px;width:25px;" :src="image">
                     </label>
                 </div>
                 
@@ -59,6 +45,10 @@
                 <div class="custom-control custom-switch m-1">
                     <input type="checkbox" class="custom-control-input" id="customSwitch2">
                     <label class="custom-control-label" for="customSwitch2">Dark Mode</label>
+                </div><hr>
+
+                <div class="container w3-card" id="changes" style="height:150px;overflow: scroll;overflow-x: hidden;">
+                        <div class="text-center m-1"><small class="text-muted">end of changes</small></div>
                 </div>
 
             </div><br>

@@ -27,6 +27,17 @@ class UserAccount extends CI_Model{
         }
     }
 
+    public function setProfileImage($user_id,$profileImage) {
+        $data = array(
+            'profile_image' => $profileImage,
+        );
+
+        echo "user_id: ".$user_id." Admin: ".$profileImage;
+
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users', $data);
+    }
+
 }
 
 ?>

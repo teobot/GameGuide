@@ -33,7 +33,7 @@ _END;
                         <div v-for="comment in comments">
                                 <div class="w3-card d-flex flex-row justify-content-left align-items-center" style="padding: 2px 2px 2px 2px; margin: 5px 0px 5px 0px;">
                                         <div class="p-2">
-                                                <div class="comment-profile-image" :style="{ backgroundImage: `url(<?php echo base_url("application/images/profile_images");?>${comment.profile_image})` }"></div>
+                                                <div class="comment-profile-image" :style="{ backgroundImage: `url(${comment.profile_image})` }"></div>
                                         </div>
                                         <div class="p-2">
                                                 <h5 style="margin: 0px 0px 0px 0px;">
