@@ -1,30 +1,43 @@
-const http = require("http");
+var app = require('http').createServer(handler)
+var io = require('socket.io')(app);
+var fs = require('fs');
 
-var app = http.createServer();
+app.listen(8080, function(response) {
+    console.log("Server started! listening on localhost:8080");
+});
 
-http.createServer(function (request, response) {
-    response.writeHead(200 , { 'Content-type': 'text/plain' });
-}).listen(8081);
-
-var io = require("socket.io")(app);
+//This writes the head of the server page, meaning that when I try to connect I can check the head for the response code
+function handler (req, res) {
+    //Change the servers index.html response code to 200 meaning that the server has been created correctly
+    //This reads its own index page file
+    fs.readFile(__dirname + '/index.html',
+        function (err, data) {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Error loading index.html');
+            }
+            res.writeHead(200);
+            res.end(data);
+        });
+}
 
 io.on("connection", function(socket) {
-    
     console.log("Someone has connected!");
+    var newUserConnection = true;
 
-    io.emit("server message", "Hello and welcome");
+    if(newUserConnection) {
+        //New User connection
+        io.emit("server message", "Server", "Welcome to the server!");
+        newUserConnection = false;
+    }
 
-    socket.on("client message", function(data) {
-        console.log("Client Message received: " + data);
-        io.emit("server message", data);
+    socket.on("client message", function(message, username, user_type) {
+        console.log("Client Message received from " + username + " message: " + message);
+        io.emit("server message", username, message);
     });
 
     socket.on('disconnect', function(){
         console.log('user disconnected');
     });
     
-});
-
-app.listen(8080, function(response) {
-    console.log("Server started! listening on localhost:8080");
 });

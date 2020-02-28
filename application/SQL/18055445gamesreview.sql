@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : conn
+ Source Server         : localhost
  Source Server Type    : MySQL
  Source Server Version : 100408
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100408
  File Encoding         : 65001
 
- Date: 24/02/2020 00:38:03
+ Date: 28/02/2020 19:34:16
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `comments`  (
   `review_id` int(11) NOT NULL,
   `comment_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`comment_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comments
@@ -53,6 +53,9 @@ INSERT INTO `comments` VALUES (22, 1, 2, 'comment3');
 INSERT INTO `comments` VALUES (23, 1, 3, 'hello');
 INSERT INTO `comments` VALUES (24, 1, 3, 'hello');
 INSERT INTO `comments` VALUES (25, 6, 15, 'password');
+INSERT INTO `comments` VALUES (26, 1, 4, 'hello');
+INSERT INTO `comments` VALUES (27, 10, 2, 'hello');
+INSERT INTO `comments` VALUES (28, 10, 3, 'cool profile image');
 
 -- ----------------------------
 -- Table structure for reviews
@@ -102,16 +105,17 @@ CREATE TABLE `users`  (
   `profile_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `account_type` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'bonfire', 'pass', '/default.jpg', 'admin');
-INSERT INTO `users` VALUES (2, 'john', 'henry', '/default.jpg', '');
-INSERT INTO `users` VALUES (3, 'gg', 'gg', '/default.jpg', '');
-INSERT INTO `users` VALUES (4, 'ggg', 'ggg', '/default.jpg', '');
-INSERT INTO `users` VALUES (5, 'bonfire2', 'gg', '/default.jpg', '');
-INSERT INTO `users` VALUES (6, 'newAccount', 'pass', '/default.jpg', '');
+INSERT INTO `users` VALUES (1, 'bonfirepass', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 'admin');
+INSERT INTO `users` VALUES (2, 'john', 'henry', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
+INSERT INTO `users` VALUES (3, 'gg', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
+INSERT INTO `users` VALUES (4, 'ggg', 'ggg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
+INSERT INTO `users` VALUES (5, 'bonfire2', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
+INSERT INTO `users` VALUES (6, 'newAccount', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
+INSERT INTO `users` VALUES (10, 'bonfire', 'pass', 'https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1675-CUSA11816_00-AV00000000000044/1580198354000/image?w=240&h=240&bg_color=000000&opacity=100&_version=00_09_000', 'admin');
 
 SET FOREIGN_KEY_CHECKS = 1;
