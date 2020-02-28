@@ -47,7 +47,7 @@
                     <label class="custom-control-label" for="customSwitch2">Dark Mode</label>
                 </div><hr>
 
-                <div class="container w3-card" id="changes" style="height:150px;overflow: scroll;overflow-x: hidden;">
+                <div class="container w3-card" id="changes" style="height:150px;overflow: scroll;overflow-x: hidden; width:200px">
                         <div class="text-center m-1"><small class="text-muted">end of changes</small></div>
                 </div>
 

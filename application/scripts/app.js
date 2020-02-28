@@ -7,11 +7,13 @@ $('#admin_switch').click(function() {
         $.post("http://localhost/PHPFrameworks/index.php/setAdmin", {accountType: "admin"})
         .done(function( data ) {
             console.log( "Data Loaded: " + data );
+            $('#changes').prepend('<div class="text-center alert-success mb-1 animated fadeIn"><small>Admin Enabled</small></div>')
         });
     } else {
         $.post("http://localhost/PHPFrameworks/index.php/setAdmin", {accountType: ""})
         .done(function( data ) {
             console.log( "Data Loaded: " + data );
+            $('#changes').prepend('<div class="text-center alert-success mb-1 animated fadeIn"><small>Admin Disabled</small></div>')
         });
     } 
 });
@@ -22,6 +24,6 @@ $('.profile-image-selection').click(function() {
     $.post("http://localhost/PHPFrameworks/index.php/setProfileImage", {image: this.value})
     .done(function( data ) {
         console.log( "Data Loaded: " + data );
-        $('#changes').prepend('<div class="text-center alert-success m-1"><small>Profile Image Updated!</small></div>')
+        $('#changes').prepend('<div class="text-center alert-success mb-1 animated fadeIn"><small>Profile Image Updated!</small></div>')
     });
 });
