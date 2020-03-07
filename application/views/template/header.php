@@ -1,3 +1,13 @@
+<?php
+    if($darkMode) {
+        $textColor = "light";
+        $bgColor = "dark";
+    } else {
+        $textColor = "dark";
+        $bgColor = "light";
+    }
+?>
+
 <html>
     <head>
         <!-- Required meta tags -->
@@ -13,7 +23,7 @@
         <script src="<?php echo base_url("application/scripts/chat.js?") . time(); ?>"></script>
         <title>18055445-CWK</title>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-<?php echo$textColor; ?> bg-<?php echo$textColor; ?>">
             <a class="navbar-brand">Games Review</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,8 +62,7 @@ _END;
         </nav>
     </head>
 
-    <?php
-    // Manipulate the body CSS colour here.
-    ?>
-    <body>
+
+
+    <body class="text-<?php echo$textColor; ?> bg-<?php echo$bgColor; ?>">
         <br>

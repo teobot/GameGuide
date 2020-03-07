@@ -31,14 +31,23 @@ class Account extends CI_Controller{
             } else {
                 $userInfo["adminChecked"] = "";
             }
+
+            if($this->UserAccount->darkModeEnabled($this->input->cookie("user_id"))) {
+                $userInfo["darkModeChecked"] = "checked-active";
+            } else {
+                $userInfo["darkModeChecked"] = "";
+            }
+
             $userInfo["err"] = "";
-            $this->load->view('template/header',);
+            $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+            $this->load->view('template/header', $headerData);
             $this->load->view('account', $userInfo);
             $this->load->view('template/footer');
         } else {
             //User is not logged in so redirect back to the login screen with error message
             $error["err"] = '<div class="alert alert-danger" role="alert">Must login first before accessing the account page!</div>';
-            $this->load->view('template/header',);
+            $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+            $this->load->view('template/header', $headerData);
             $this->load->view('login', $error);
             $this->load->view('template/footer');
         }
@@ -72,7 +81,13 @@ class Account extends CI_Controller{
                     } else {
                         $userInfo["adminChecked"] = "";
                     }
-                    $this->load->view('template/header',);
+                    if($this->UserAccount->darkModeEnabled($this->input->cookie("user_id"))) {
+                        $userInfo["darkModeChecked"] = "checked-active";
+                    } else {
+                        $userInfo["darkModeChecked"] = "";
+                    }
+                    $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                    $this->load->view('template/header', $headerData);
                     $this->load->view('account', $userInfo);
                     $this->load->view('template/footer');
                 }
@@ -82,14 +97,16 @@ class Account extends CI_Controller{
                 $userInfo["err"] = '<div class="alert alert-danger" role="alert">You must have a username and password!</div>';
                 $userInfo["username"] = $this->input->cookie("username");
                 $userInfo["password"] = $this->LoginModel->getAccount($this->input->cookie("user_id"))["password"];
-                $this->load->view('template/header',);
+                $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                $this->load->view('template/header', $headerData);
                 $this->load->view('account', $userInfo);
                 $this->load->view('template/footer');
             }
         } else {
             //User is not logged in so redirect back to the login screen with error message
             $error["err"] = '<div class="alert alert-danger" role="alert">Must login first before accessing the account page!</div>';
-            $this->load->view('template/header',);
+            $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+            $this->load->view('template/header', $headerData);
             $this->load->view('login', $error);
             $this->load->view('template/footer');
         }
@@ -100,6 +117,13 @@ class Account extends CI_Controller{
         $accountType = $this->input->post("accountType");
         echo $accountType;
         $this->UserAccount->setAccountType($this->input->cookie('user_id'),$accountType);
+    }
+
+    public function setDarkMode()
+    {
+        $darkMode = $this->input->post("darkMode");
+        echo $darkMode;
+        $this->UserAccount->setDarkMode($this->input->cookie('user_id'),$darkMode);
     }
 
     public function setProfileImage()

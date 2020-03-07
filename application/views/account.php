@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="custom-control custom-switch m-1">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                    <label class="custom-control-label" for="customSwitch2">Dark Mode</label>
+                    <input type="checkbox" class="custom-control-input <?php echo $darkModeChecked;?>" id="darkmode_switch">
+                    <label class="custom-control-label active" for="darkmode_switch">Dark Mode</label>
                 </div><hr>
 
                 <div class="container w3-card" id="changes" style="height:150px;overflow: scroll;overflow-x: hidden; width:200px">

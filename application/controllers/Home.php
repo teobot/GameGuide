@@ -15,6 +15,7 @@ class Home extends CI_Controller{
         $this->load->model('HomeModel');
         $this->load->model('LoginModel');
         $this->load->model('CommentModel');
+        $this->load->model('UserAccount');
     }
 
     public function index()
@@ -23,7 +24,8 @@ class Home extends CI_Controller{
         $data['result'] = $this->HomeModel->getGame();
 
         //Load the view and send the data accross.
-        $this->load->view('template/header');
+        $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+        $this->load->view('template/header', $headerData);
         $this->load->view('home', $data);
         $this->load->view('template/footer');
     }
@@ -54,7 +56,8 @@ class Home extends CI_Controller{
         }
 
         //Load the view and send the data accross.
-        $this->load->view('template/header');
+        $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+        $this->load->view('template/header', $headerData);
         $this->load->view('review', $data);
         $this->load->view('template/footer');
     }

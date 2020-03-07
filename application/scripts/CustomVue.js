@@ -5,6 +5,7 @@ var app = new Vue({
       comments:[]
     }, 
     created() {
+      
       this.getComments();
     },   
     methods: {
@@ -17,6 +18,12 @@ var app = new Vue({
         });
         
       },
+      postComment:function() {
+        var pathArray = window.location.pathname.split('/');
+        $.post("",{"slug":pathArray[4]}, function(data){
+          
+        });
+      }
     }
 });
 

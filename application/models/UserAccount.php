@@ -10,9 +10,7 @@ class UserAccount extends CI_Model{
         $data = array(
             'account_type' => $accountType,
         );
-
         echo "user_id: ".$user_id." Admin: ".$accountType;
-
         $this->db->where('user_id', $user_id);
         $this->db->update('users', $data);
     }
@@ -27,13 +25,30 @@ class UserAccount extends CI_Model{
         }
     }
 
+    public function darkModeEnabled($user_id) {
+        $query = $this->db->get_where('users', array('user_id' => $user_id));
+        $return = $query->row();
+        if($return->dark_mode === "1") {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public function setProfileImage($user_id,$profileImage) {
         $data = array(
             'profile_image' => $profileImage,
         );
-
         echo "user_id: ".$user_id." Admin: ".$profileImage;
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users', $data);
+    }
 
+    public function setDarkMode($user_id,$darkMode) {
+        $data = array(
+            'dark_mode' => $darkMode,
+        );
+        echo "user_id: ".$user_id." DarkMode: ".$darkMode;
         $this->db->where('user_id', $user_id);
         $this->db->update('users', $data);
     }

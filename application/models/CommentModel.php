@@ -6,7 +6,7 @@ class CommentModel extends CI_Model{
         $this->load->database();
     }
 
-    public function getComments($slug) {
+    public function getComments($slug = FALSE) {
         $review_id_sql = $this->db->query("SELECT review_id FROM reviews WHERE slug = '$slug'");
         $review_id_result = $review_id_sql->row_array();
         $review_id = $review_id_result["review_id"];
@@ -16,7 +16,6 @@ class CommentModel extends CI_Model{
         $comments = array();
 
         foreach($query->result() as $comment) {
-            //echo($comment->username);
             $comments[] = (object) array(
                 'username' => $comment->username,
                 'message' => $comment->comment_text,
