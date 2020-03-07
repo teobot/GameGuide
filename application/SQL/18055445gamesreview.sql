@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : Framework database
  Source Server Type    : MySQL
  Source Server Version : 100408
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100408
  File Encoding         : 65001
 
- Date: 28/02/2020 19:34:16
+ Date: 07/03/2020 16:38:57
 */
 
 SET NAMES utf8mb4;
@@ -103,6 +103,7 @@ CREATE TABLE `users`  (
   `username` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `profile_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `dark_mode` int(1) NULL DEFAULT NULL,
   `account_type` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -110,12 +111,12 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'bonfirepass', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 'admin');
-INSERT INTO `users` VALUES (2, 'john', 'henry', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
-INSERT INTO `users` VALUES (3, 'gg', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
-INSERT INTO `users` VALUES (4, 'ggg', 'ggg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
-INSERT INTO `users` VALUES (5, 'bonfire2', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
-INSERT INTO `users` VALUES (6, 'newAccount', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', '');
-INSERT INTO `users` VALUES (10, 'bonfire', 'pass', 'https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1675-CUSA11816_00-AV00000000000044/1580198354000/image?w=240&h=240&bg_color=000000&opacity=100&_version=00_09_000', 'admin');
+INSERT INTO `users` VALUES (1, 'bonfirepass', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, 'admin');
+INSERT INTO `users` VALUES (2, 'john', 'henry', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (3, 'gg', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (4, 'ggg', 'ggg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (5, 'bonfire2', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (6, 'newAccount', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (10, 'bonfire', 'pass', 'https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1675-CUSA11816_00-AV00000000000044/1580198354000/image?w=240&h=240&bg_color=000000&opacity=100&_version=00_09_000', 0, 'admin');
 
 SET FOREIGN_KEY_CHECKS = 1;
