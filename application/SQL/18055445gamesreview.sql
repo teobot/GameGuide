@@ -11,7 +11,7 @@
  Target Server Version : 100408
  File Encoding         : 65001
 
- Date: 10/03/2020 14:17:57
+ Date: 10/03/2020 17:53:29
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `comments`  (
   `comment_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `time_stamp` timestamp(0) NOT NULL DEFAULT current_timestamp(0) ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`comment_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comments
@@ -70,6 +70,9 @@ INSERT INTO `comments` VALUES (38, 10, 2, 'comment', '2020-03-10 12:58:44');
 INSERT INTO `comments` VALUES (39, 10, 2, 'hi nick', '2020-03-10 13:19:31');
 INSERT INTO `comments` VALUES (40, 10, 2, 'post', '2020-03-10 13:25:56');
 INSERT INTO `comments` VALUES (41, 10, 2, 'howdy', '2020-03-10 14:13:19');
+INSERT INTO `comments` VALUES (42, 12, 2, 'hello', '2020-03-10 14:31:37');
+INSERT INTO `comments` VALUES (43, 12, 2, 'test', '2020-03-10 14:31:50');
+INSERT INTO `comments` VALUES (45, 12, 2, 'post comment', '2020-03-10 15:05:45');
 
 -- ----------------------------
 -- Table structure for reviews
