@@ -13,39 +13,48 @@
                 <p class="container" style="font-size: 1.25rem;line-height: 32px;"><?php echo $review["review_text"]; ?></p>
                 <h1 style="font-weight: 900;">Comments</h1>
 
+                <div id="commentSection" class="container">
                 <?php
                         if($loggedIn) {
                                 $push_comment = base_url("index.php/review/" . $review["slug"]);
                                 echo<<<_END
                                 <div class="container-fluid">
-                                        <form class="form-inline" method="post" action="$push_comment">
+                                        <form id="postCommentForm" class="form-inline">
                                                 <div class="form-group mx-sm-3 mb-2">
                                                         <input type="text" name="comment" class="form-control" placeholder="Comment...">
                                                 </div>
-                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                                <button id="postCommentButton" v-on:click="postComment" class="btn btn-primary mb-2">Submit</button>
                                         </form>
                                 </div>
 _END;
                         }
 
                 ?>
-                <div id="commentSection" class="container">
                         <div v-for="comment in comments">
-                                <div class="w3-card d-flex flex-row justify-content-left align-items-center" style="padding: 2px 2px 2px 2px; margin: 5px 0px 5px 0px;">
-                                        <div class="p-2">
-                                                <div class="comment-profile-image" :style="{ backgroundImage: `url(${comment.profile_image})` }"></div>
+                                <div class="w3-card container m-2" style="height: 60px;">
+                                        <div class="row">
+
+                                                <div class="col-1 m-0">
+                                                        <div class="comment-profile-image" :style="{ backgroundImage: `url(${comment.profile_image})` }"></div>
+                                                </div>
+
+                                                <div class="col-8 ml-3">
+                                                        <h5 class="m-0">
+                                                                {{comment.username}} -
+                                                                <a v-if="comment.admin" class="badge badge-pill badge-info animated infinite pulse slow">Admin</a>
+                                                                <small class="text-muted" v-else>User</small>
+                                                        </h5>
+                                                        <p class="m-0">
+                                                                {{comment.message}}
+                                                        </p>
+                                                </div>
+
+                                                <div class="col m-1">
+                                                        <div style="text-align: right" class="mr-3">{{comment.timestamp}}</div>
+                                                </div>
+
                                         </div>
-                                        <div class="p-2">
-                                                <h5 style="margin: 0px 0px 0px 0px;">
-                                                        {{comment.username}} -
-                                                        <a v-if="comment.admin" class="badge badge-pill badge-info animated infinite pulse slow">Admin</a>
-                                                        <small class="text-muted" v-else>User</small>
-                                                </h5>
-                                                <p style="margin: 0px 0px 0px 0px;">
-                                                        {{comment.message}}
-                                                </p>
-                                        </div>
-                                </div>   
+                                </div>
                         </div>
                 </div>
 

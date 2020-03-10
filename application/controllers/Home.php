@@ -40,17 +40,15 @@ class Home extends CI_Controller{
         echo json_encode($data);
     }
 
+    public function post_comment() {
+        $user_comment = $this->input->post("comment");
+        $user_id = $this->input->cookie("user_id");
+        $location_slug = $this->input->post("slug");
+        $this->CommentModel->postComment($user_comment, $user_id, $location_slug);     
+    }
+
     public function review($slug = NULL)
     {
-        //If the user has tried to comment then send the data to be inserted
-        if ($this->input->post("comment") && $this->input->cookie("username")) {
-            
-            $user_comment = $this->input->post("comment");
-            $user_id = $this->input->cookie("user_id");
-            $location_slug = $slug;
-            $this->CommentModel->postComment($user_comment, $user_id, $location_slug);
-        }
-
         $data['review'] = $this->HomeModel->getReview($slug);
         $data['loggedIn'] = $this->LoginModel->userLoggedIn();
 

@@ -11,7 +11,7 @@ class CommentModel extends CI_Model{
         $review_id_result = $review_id_sql->row_array();
         $review_id = $review_id_result["review_id"];
 
-        $query = $this->db->query("SELECT * FROM comments INNER JOIN users USING(user_id) WHERE review_id = '$review_id'");
+        $query = $this->db->query("SELECT * FROM comments INNER JOIN users USING(user_id) WHERE review_id = '$review_id' ORDER BY time_stamp DESC");
 
         $comments = array();
 
@@ -21,6 +21,7 @@ class CommentModel extends CI_Model{
                 'message' => $comment->comment_text,
                 'profile_image' => $comment->profile_image,
                 'admin' => $comment->account_type,
+                'timestamp' => $comment->time_stamp,
             );
         }
 

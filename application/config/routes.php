@@ -64,5 +64,6 @@ $route['account/update-details'] = 'Account/updateAccount';
 $route["setAdmin"] = "Account/setAdmin";
 $route["setDarkMode"] = "Account/setDarkMode";
 $route["setProfileImage"] = "Account/setProfileImage";
+$route["postComment"] = "Home/post_comment";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

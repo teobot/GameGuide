@@ -2,6 +2,10 @@ $( document ).ready(function() {
     $('.checked-active').prop('checked', true);
 });
 
+$("#postCommentForm").submit(function(form){
+    form.preventDefault();
+});
+
 $('#admin_switch').click(function() {
     if ($(this).is(':checked')) {
         $.post("http://localhost/PHPFrameworks/index.php/setAdmin", {accountType: "admin"})

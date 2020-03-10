@@ -1,11 +1,10 @@
-var app = new Vue({
+var commentElement = new Vue({
     // Add the id here.
     el: '#commentSection',
     data: {
       comments:[]
     }, 
     created() {
-      
       this.getComments();
     },   
     methods: {
@@ -14,14 +13,20 @@ var app = new Vue({
         var pathArray = window.location.pathname.split('/');
         $.get("http://localhost/PHPFrameworks/index.php/getComments",{"slug":pathArray[4]}, function(data){
           console.log(data);
-          app.comments = data;
+          commentElement.comments = data;
         });
         
       },
       postComment:function() {
+        var comment = $("#postCommentForm").serializeArray();
         var pathArray = window.location.pathname.split('/');
-        $.post("",{"slug":pathArray[4]}, function(data){
-          
+        console.log(pathArray)
+
+        $.post("http://localhost/PHPFrameworks/index.php/postComment",{ "slug":pathArray[4], "comment":comment[0].value }, function(data){
+          //CLEAR THE TEXT AREA
+          console.log(data);
+          //SHOW A SUBMITTED TEXT
+          commentElement.getComments();
         });
       }
     }
