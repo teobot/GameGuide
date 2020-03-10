@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Framework database
+ Source Server         : localhost
  Source Server Type    : MySQL
  Source Server Version : 100408
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100408
  File Encoding         : 65001
 
- Date: 07/03/2020 16:38:57
+ Date: 10/03/2020 14:17:57
 */
 
 SET NAMES utf8mb4;
@@ -26,36 +26,50 @@ CREATE TABLE `comments`  (
   `user_id` int(11) NOT NULL,
   `review_id` int(11) NOT NULL,
   `comment_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `time_stamp` timestamp(0) NOT NULL DEFAULT current_timestamp(0) ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`comment_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
-INSERT INTO `comments` VALUES (5, 1, 6, 'post');
-INSERT INTO `comments` VALUES (6, 1, 2, 'post');
-INSERT INTO `comments` VALUES (7, 1, 3, 'new comment');
-INSERT INTO `comments` VALUES (8, 1, 6, 'i love this movie');
-INSERT INTO `comments` VALUES (9, 2, 2, 'I hate the comment above');
-INSERT INTO `comments` VALUES (10, 2, 9, 'i love overwatch');
-INSERT INTO `comments` VALUES (11, 2, 11, 'This game is real scary');
-INSERT INTO `comments` VALUES (12, 1, 2, 'i love this film');
-INSERT INTO `comments` VALUES (13, 1, 2, 'comment');
-INSERT INTO `comments` VALUES (14, 1, 2, 'comment2');
-INSERT INTO `comments` VALUES (15, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (16, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (17, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (18, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (19, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (20, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (21, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (22, 1, 2, 'comment3');
-INSERT INTO `comments` VALUES (23, 1, 3, 'hello');
-INSERT INTO `comments` VALUES (24, 1, 3, 'hello');
-INSERT INTO `comments` VALUES (25, 6, 15, 'password');
-INSERT INTO `comments` VALUES (26, 1, 4, 'hello');
-INSERT INTO `comments` VALUES (27, 10, 2, 'hello');
-INSERT INTO `comments` VALUES (28, 10, 3, 'cool profile image');
+INSERT INTO `comments` VALUES (5, 1, 6, 'post', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (6, 1, 2, 'post', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (7, 1, 3, 'new comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (8, 1, 6, 'i love this movie', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (9, 2, 2, 'I hate the comment above', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (10, 2, 9, 'i love overwatch', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (11, 2, 11, 'This game is real scary', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (12, 1, 2, 'i love this film', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (13, 1, 2, 'comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (14, 1, 2, 'comment2', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (15, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (16, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (17, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (18, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (19, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (20, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (21, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (22, 1, 2, 'comment3', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (23, 1, 3, 'hello', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (24, 1, 3, 'hello', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (25, 6, 15, 'password', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (26, 1, 4, 'hello', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (27, 10, 2, 'hello', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (28, 10, 3, 'cool profile image', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (29, 10, 2, 'comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (30, 10, 2, 'comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (31, 10, 2, 'comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (32, 10, 2, 'new comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (33, 10, 2, 'new comment', '2020-03-10 12:52:16');
+INSERT INTO `comments` VALUES (34, 10, 2, 'hello', '2020-03-10 12:52:34');
+INSERT INTO `comments` VALUES (35, 10, 2, 'new comment', '2020-03-10 12:53:47');
+INSERT INTO `comments` VALUES (36, 10, 2, 'hello zayed', '2020-03-10 12:53:58');
+INSERT INTO `comments` VALUES (37, 10, 2, 'comment', '2020-03-10 12:58:37');
+INSERT INTO `comments` VALUES (38, 10, 2, 'comment', '2020-03-10 12:58:44');
+INSERT INTO `comments` VALUES (39, 10, 2, 'hi nick', '2020-03-10 13:19:31');
+INSERT INTO `comments` VALUES (40, 10, 2, 'post', '2020-03-10 13:25:56');
+INSERT INTO `comments` VALUES (41, 10, 2, 'howdy', '2020-03-10 14:13:19');
 
 -- ----------------------------
 -- Table structure for reviews
@@ -103,10 +117,10 @@ CREATE TABLE `users`  (
   `username` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `profile_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `dark_mode` int(1) NULL DEFAULT NULL,
+  `dark_mode` int(1) NULL DEFAULT 0,
   `account_type` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -118,5 +132,7 @@ INSERT INTO `users` VALUES (4, 'ggg', 'ggg', 'https://moonvillageassociation.org
 INSERT INTO `users` VALUES (5, 'bonfire2', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
 INSERT INTO `users` VALUES (6, 'newAccount', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
 INSERT INTO `users` VALUES (10, 'bonfire', 'pass', 'https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1675-CUSA11816_00-AV00000000000044/1580198354000/image?w=240&h=240&bg_color=000000&opacity=100&_version=00_09_000', 0, 'admin');
+INSERT INTO `users` VALUES (11, 'new account hi', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (12, 'theo', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -34,7 +34,7 @@ class LoginModel extends CI_Model{
         $data = array(
             'username'=>$username,
             'password'=>$password,
-            'profile_image'=>"/default.jpg",
+            'profile_image'=>"https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg",
             'account_type'=>""
         );
         $this->db->insert('users',$data);
