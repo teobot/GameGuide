@@ -26,12 +26,16 @@ class UserAccount extends CI_Model{
     }
 
     public function darkModeEnabled($user_id) {
-        $query = $this->db->get_where('users', array('user_id' => $user_id));
-        $return = $query->row();
-        if($return->dark_mode === "1") {
-            return TRUE;
-        } else {
+        if(empty($user_id)) {
             return FALSE;
+        } else {
+            $query = $this->db->get_where('users', array('user_id' => $user_id));
+            $return = $query->row();
+            if($return->dark_mode === "1") {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         }
     }
 

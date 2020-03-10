@@ -50,7 +50,11 @@ class Login extends CI_Controller{
                     redirect('Home', 'refresh');
                 } else {
                     //The users doesn't exist so send them back.
-                    $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                    if (empty($this->input->cookie("user_id"))) {
+                        $headerData["darkMode"] = FALSE;
+                    } else {
+                        $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                    }
                     $this->load->view('template/header', $headerData);
                     $this->load->view('login', $return);
                     $this->load->view('template/footer');
@@ -58,7 +62,11 @@ class Login extends CI_Controller{
                 //...
             } else {   
                 //User hasn't tried to login so give them the login page!
-                $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                if (empty($this->input->cookie("user_id"))) {
+                    $headerData["darkMode"] = FALSE;
+                } else {
+                    $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                }
                 $this->load->view('template/header', $headerData);
                 $this->load->view('login');
                 $this->load->view('template/footer');
@@ -97,7 +105,11 @@ class Login extends CI_Controller{
                         redirect('Home', 'refresh');
                     } else {
                         //The users doesn't exist so send them back.
+                    if (empty($this->input->cookie("user_id"))) {
+                        $headerData["darkMode"] = FALSE;
+                    } else {
                         $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                    }
                         $this->load->view('template/header', $headerData);
                         $this->load->view('login', $return);
                         $this->load->view('template/footer');
@@ -105,14 +117,22 @@ class Login extends CI_Controller{
                 } else {
                     //Username is taken so load the page with a err message
                     $data["err"] = '<div class="alert alert-danger" role="alert">Username is taken!</div>';
-                    $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                    if (empty($this->input->cookie("user_id"))) {
+                        $headerData["darkMode"] = FALSE;
+                    } else {
+                        $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                    }
                     $this->load->view('template/header', $headerData);
                     $this->load->view('register', $data);
                     $this->load->view('template/footer');
                 }
             } else {
                 //The users isn't logged in and hasn't submitted any data so load the form up
-                $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                if (empty($this->input->cookie("user_id"))) {
+                    $headerData["darkMode"] = FALSE;
+                } else {
+                    $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+                }
                 $this->load->view('template/header', $headerData);
                 $this->load->view('register');
                 $this->load->view('template/footer');

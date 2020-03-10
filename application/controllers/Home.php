@@ -24,7 +24,11 @@ class Home extends CI_Controller{
         $data['result'] = $this->HomeModel->getGame();
 
         //Load the view and send the data accross.
-        $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+        if (empty($this->input->cookie("user_id"))) {
+            $headerData["darkMode"] = FALSE;
+        } else {
+            $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+        }
         $this->load->view('template/header', $headerData);
         $this->load->view('home', $data);
         $this->load->view('template/footer');
@@ -56,7 +60,11 @@ class Home extends CI_Controller{
         }
 
         //Load the view and send the data accross.
-        $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+        if (empty($this->input->cookie("user_id"))) {
+            $headerData["darkMode"] = FALSE;
+        } else {
+            $headerData["darkMode"] = $this->UserAccount->darkModeEnabled($this->input->cookie("user_id"));
+        }
         $this->load->view('template/header', $headerData);
         $this->load->view('review', $data);
         $this->load->view('template/footer');
