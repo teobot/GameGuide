@@ -12,8 +12,16 @@
             </div>
             <div class="modal-body">
                 <div style="max-height:300px;overflow: auto;">
-                <ul id="textChat" class="list-group list-group-flush">
-                    
+                <ul id="textChat" class="list-group list-group-flush" v-for="message in messages">
+
+                    <div class="container">  
+                        <div class="row justifty-content-start">
+                            <div class="animated fadeOut slower"><small>NEW</small></div>
+                            <div class="">{{message.username}} : {{message.text}}</div>
+                        </div>
+                    </div>
+                
+
                 </ul>
                 </div><br>
                     <div id="messageBox">
@@ -27,7 +35,7 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="sendComment">Send</button>
+                        <button v-on:click="sendMessage" class="btn btn-primary" id="sendComment">Send</button>
                     </div>
             </div>
         </div>

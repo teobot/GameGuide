@@ -6,13 +6,12 @@ class CommentModel extends CI_Model{
         $this->load->database();
     }
 
-    public function getComments($slug = FALSE) {
+    public function getComments($slug) {
         $review_id_sql = $this->db->query("SELECT review_id FROM reviews WHERE slug = '$slug'");
         $review_id_result = $review_id_sql->row_array();
         $review_id = $review_id_result["review_id"];
-
         $query = $this->db->query("SELECT * FROM comments INNER JOIN users USING(user_id) WHERE review_id = '$review_id' ORDER BY time_stamp DESC");
-
+        
         $comments = array();
 
         foreach($query->result() as $comment) {

@@ -62,7 +62,5 @@ _END;
         </nav>
     </head>
 
-
-
     <body class="text-<?php echo$textColor; ?> bg-<?php echo$bgColor; ?>">
         <br>

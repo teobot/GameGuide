@@ -45,3 +45,40 @@ var profile_images = new Vue({
     ]
   }, 
 });
+
+var socket = io('http://localhost:8080');
+var chatSystem = new Vue({
+  el: '#globalChat',
+  data: {
+    username: "Bonfire",
+    admin: false,
+    isConnected: false,
+    messages:[],
+  },
+  created() {
+    socket.on("server message", function(username, message) {
+        console.log(message);
+        chatSystem.messages.push({ "text":message, "username":username });
+    });
+    setInterval(
+        function(){
+            //If the socket connection is succesful
+            if (socket.connected) {
+                //enabled the chat button
+                chatSystem.isConnected = false;
+                document.getElementById("chatButton").disabled = false;
+            }
+            else {
+                //client cannot connect to the chat server so disable the button
+                chatSystem.isConnected = true;
+                document.getElementById("chatButton").disabled = true;
+            }
+        },500);
+
+  },
+  methods: {
+    sendMessage:function() {
+      socket.emit("client message", "Test", "Bonfire");
+    },
+  }
+});

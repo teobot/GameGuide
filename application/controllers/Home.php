@@ -35,7 +35,7 @@ class Home extends CI_Controller{
     }
 
     public function get_Comments() {
-        $data = $this->CommentModel->getComments($this->input->get("slug"));
+        $data = $this->CommentModel->getComments( $this->input->get("slug") );
         header('Content-type: application/json');
         echo json_encode($data);
     }
