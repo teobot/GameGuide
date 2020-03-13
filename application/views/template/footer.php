@@ -2,44 +2,60 @@
 
 <!-- Modal -->
     <div id="globalChat" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+
         <div class="modal-dialog" role="document">
+
             <div class="modal-content">
-            <div class="modal-header">
 
-                <span class="align-middle h4">Global Chat</span>
-                <span v-if="userLoggedIn" class="align-middle"> - Logged in</span>        
+                <div class="p-0 m-2 align-items-middle">
+                    <span class="h3">Chat</span><hr class="mt-2 mb-2">
+                    <select class="custom-select" v-model="currentChatroom">
+                        <option value="General" selected>Pick a chat room!</option>
+                        <option v-for="chatroom in chatRooms" :value="chatroom">{{chatroom}}</option>
+                    </select>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div style="max-height:300px;overflow: auto;">
-                <ul id="textChat" class="list-group list-group-flush" v-for="message in messages">
+                </div>
 
-                    <div class="container">  
-                        <div class="row justifty-content-start">
-                            <span class="animated fadeOut slower align-middle">NEW</span>
-                            <span class="align-middle h5">{{message.username}} : {{message.message}}</span>
-                        </div>
-                    </div>
+                <div class="border align-items-middle">
+                    <span v-if="userLoggedIn" class="ml-2 text-muted small" >Status: Logged in</span><span v-else class="ml-2 text-muted small">Status: Not logged in</span><br>
+                    <span class="ml-2 text-muted small">Username: {{username}}</span><br>
+                    <span class="ml-2 text-muted small">Chatroom: {{currentChatroom}}</span><br>
+                    <span class="ml-2 text-muted small">Administator: {{admin}}</span>
+                </div> 
                 
+                <div class="modal-body">
 
-                </ul>
-                </div><br>
+                    <div style="max-height:300px;overflow: auto;">
+                        <ul id="textChat" class="list-group list-group-flush" >
+                            <div class="container animated fadeIn" v-for="message in messages">  
+                                <div class="row justifty-content-start">
+                                    <span class="align-middle"> {{message.username}}: </span>
+                                    <span class="align-middle"> {{message.message}} </span>
+                                </div>
+                            </div>
+                        
+                        </ul>
+                    </div><br>
+
                     <div id="messageBox">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="username_tag">{{username}}</span>
+                                <span class="input-group-text small align-middle" id="username_tag">{{username}}</span>
                             </div>
-                            <input v-model="messageToPost" type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
+                            <input v-model="messageToPost" min="0" max="30" type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small align-middle">{{messageToPost.length}}/30</span>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button v-on:click="sendMessage" class="btn btn-primary" id="sendComment">Send</button>
                     </div>
+
             </div>
         </div>
     </div>
