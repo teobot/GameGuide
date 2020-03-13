@@ -51,6 +51,8 @@ class LoginModel extends CI_Model{
             $return["password"] = $result[0]->password;
             if($result[0]->account_type == "admin") {
                 $return["isAdmin"] = TRUE;
+            } else {
+                $return["isAdmin"] = FALSE;
             }
             $return["profile_image"] = $result[0]->profile_image;
         }
