@@ -50,35 +50,44 @@ var socket = io('http://localhost:8080');
 var chatSystem = new Vue({
   el: '#globalChat',
   data: {
-    username: "Bonfire",
+    username: "Anonymous",
+    userLoggedIn: false,
     admin: false,
     isConnected: false,
-    messages:[],
+    messages: [],
+    messageToPost: "",
   },
   created() {
+    $.get("http://localhost/PHPFrameworks/index.php/getAccountDetails", function(data) {
+      console.log(data);
+      if(!data.failed) {
+        chatSystem.username = data.username;
+        chatSystem.admin = data.isAdmin;
+        chatSystem.userLoggedIn = true;
+      } 
+    });
     socket.on("server message", function(username, message) {
         console.log(message);
-        chatSystem.messages.push({ "text":message, "username":username });
+        chatSystem.messages.push({ "username":username, "message":message });
     });
-    setInterval(
-        function(){
-            //If the socket connection is succesful
-            if (socket.connected) {
-                //enabled the chat button
-                chatSystem.isConnected = false;
-                document.getElementById("chatButton").disabled = false;
-            }
-            else {
-                //client cannot connect to the chat server so disable the button
-                chatSystem.isConnected = true;
-                document.getElementById("chatButton").disabled = true;
-            }
-        },500);
-
+    setInterval( function(){
+      //If the socket connection is succesful
+      if (socket.connected) {
+        //enabled the chat button
+        chatSystem.isConnected = true;
+        $("#chatButton").disabled = false;
+      }
+      else {
+        //client cannot connect to the chat server so disable the button
+        chatSystem.isConnected = false;
+        $("#chatButton").disabled = true;
+      }
+    },500);
   },
   methods: {
     sendMessage:function() {
-      socket.emit("client message", "Test", "Bonfire");
+      $("#message").val('');
+      socket.emit("client message", chatSystem.username, chatSystem.messageToPost, chatSystem.isAdmin );
     },
   }
 });
