@@ -20,6 +20,10 @@ function handler (req, res) {
         res.end(data);
     });
 }
+ 
+var adminMessages = [];
+var memberMessages = [];
+var generalMessages = [];
 
 io.on("connection", function(socket) {
     console.log("User has connected to the server!");
@@ -27,13 +31,30 @@ io.on("connection", function(socket) {
 
     if(newUserConnection) {
         //New User connection
-        io.emit("server message", "Server", "Welcome to the server!");
         newUserConnection = false;
+        io.emit("server chatlog", generalMessages);
     }
 
-    socket.on("client message", function(username, message, acountType) {
-        console.log("Client Message received from " + username + " message: " + message);
-        io.emit("server message", username, message);
+    socket.on("client chatlog request", function(chatroom, username) {
+        if(chatroom == "General") {
+            io.emit("server chatlog", generalMessages, username);
+        } else if (chatroom == "Admin Only") {
+            io.emit("server chatlog", adminMessages, username);
+        } else if (chatroom == "Member Only") {
+            io.emit("server chatlog", memberMessages, username);
+        }
+    });
+
+    socket.on("client message", function(username, message, chatroom, admin) {
+        console.log("Client Message received from " + username + " message: " + message + " account: " + chatroom);
+        io.emit("server message", username, message, chatroom, admin);
+        if(chatroom == "General") {
+            generalMessages.push({username:username,message:message,admin:admin});
+        } else if (chatroom == "Admin Only") {
+            adminMessages.push({username:username,message:message,admin:admin});
+        } else if (chatroom == "Member Only") {
+            memberMessages.push({username:username,message:message,admin:admin});
+        }
     });
 
     socket.on('disconnect', function(){
