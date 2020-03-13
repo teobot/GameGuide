@@ -5,7 +5,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="chatBoxLabel">Global Chat</h5>
+
+                <span class="align-middle h4">Global Chat</span>
+                <span v-if="userLoggedIn" class="align-middle"> - Logged in</span>        
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -16,8 +19,8 @@
 
                     <div class="container">  
                         <div class="row justifty-content-start">
-                            <div class="animated fadeOut slower"><small>NEW</small></div>
-                            <div class="">{{message.username}} : {{message.text}}</div>
+                            <span class="animated fadeOut slower align-middle">NEW</span>
+                            <span class="align-middle h5">{{message.username}} : {{message.message}}</span>
                         </div>
                     </div>
                 
@@ -27,9 +30,9 @@
                     <div id="messageBox">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" data-id="<?php echo $this->input->cookie("user_id"); ?>" data-username="<?php echo $this->input->cookie("username"); ?>" id="username_tag"><?php echo $this->input->cookie("username"); ?></span>
+                                <span class="input-group-text" id="username_tag">{{username}}</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
+                            <input v-model="messageToPost" type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
                         </div>
                     </div>
                 </div>
