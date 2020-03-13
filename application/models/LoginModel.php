@@ -41,7 +41,7 @@ class LoginModel extends CI_Model{
     }
 
     public function getAccount($user_id) {
-        $query = $this->db->query("SELECT username,password,profile_image FROM users WHERE user_id = '$user_id'");
+        $query = $this->db->query("SELECT * FROM users WHERE user_id = '$user_id'");
         $result = $query->result();
         if(empty($result)) {
             $return["failed"] = TRUE;
@@ -49,6 +49,9 @@ class LoginModel extends CI_Model{
             $return["failed"] = FALSE;
             $return["username"] = $result[0]->username;
             $return["password"] = $result[0]->password;
+            if($result[0]->account_type == "admin") {
+                $return["isAdmin"] = TRUE;
+            }
             $return["profile_image"] = $result[0]->profile_image;
         }
         return $return;
