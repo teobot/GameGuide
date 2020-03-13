@@ -154,4 +154,18 @@ class Account extends CI_Controller{
         $this->UserAccount->setProfileImage($this->input->cookie('user_id'),$profileImage);
     }
 
+    public function getAccountDetails(){
+        if(!empty($this->input->cookie("user_id"))) {
+            //COOKIE EXISTS
+            $return = $this->LoginModel->getAccount($this->input->cookie("user_id"));
+            header('Content-Type: application/json');
+            echo json_encode($return);
+        } else {
+            //COOKIE DOESN'T EXIST
+            $return["failed"] = TRUE;
+            header('Content-Type: application/json');
+            echo json_encode($return);
+        }
+    }
+
 }
