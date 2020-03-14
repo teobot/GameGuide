@@ -75,9 +75,7 @@ var chatSystem = new Vue({
 
     socket.on("server chatlog", function(chatlog, username) {
       chatSystem.messages = chatlog;
-      console.log(chatlog)
-      var objDiv = document.getElementById("textChat");
-      objDiv.scrollTop = objDiv.scrollHeight;
+      chatSystem.messages.push({ "username":"CHAT CHANGE", "message":"You have entered chatroom: " + chatSystem.currentChatroom, "admin":false });
     });
 
     socket.on("server message", function(username, message, chatroom, admin) {
@@ -117,6 +115,7 @@ var chatSystem = new Vue({
         socket.emit("client chatlog request", chatSystem.currentChatroom );
       } else {
         chatSystem.messages = [];
+        chatSystem.messages.push({ "username":"CHAT CHANGE", "message":"You do not have access to: " + chatSystem.currentChatroom, "admin":false });
       }
     }    
   },
