@@ -27,10 +27,10 @@
 
                     <div style="max-height:300px;overflow: auto;">
                         <ul id="textChat" class="list-group list-group-flush" >
-                            <div class="container animated fadeIn" v-for="message in messages">  
-                                <div class="row justifty-content-start">
-                                    <span class="align-middle"> {{message.username}}: </span>
-                                    <span class="align-middle"> {{message.message}} </span>
+                            <div class="container animated fadeIn border-bottom" v-for="message in messages">  
+                                <div class="row justifty-content-start mb-1 mt-1">
+                                    <span class="align-middle" :class="{ 'bg-info text-white' : message.admin }" > {{message.username}} </span>
+                                    <span class="align-middle text-muted">: {{message.message}} </span>
                                 </div>
                             </div>
                         

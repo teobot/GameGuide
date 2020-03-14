@@ -89,7 +89,7 @@ var chatSystem = new Vue({
           } else {
             //Instead of pushing the new message to the array I use Unshift as this pushes the new message to the top instead,
             //Therefore new messages will show at the top not the bottom
-            chatSystem.messages.unshift({ "username":username, "message":message, "admin":admin });
+            chatSystem.messages.push({ "username":username, "message":message, "admin":admin });
           }
         }    
     });
