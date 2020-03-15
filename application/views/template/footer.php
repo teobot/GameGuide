@@ -9,9 +9,10 @@
 
                 <div class="p-0 m-2 align-items-middle">
                     <span class="h3">Chat</span><hr class="mt-2 mb-2">
-                    <select class="custom-select" v-model="currentChatroom">
-                        <option value="General" selected>Pick a chat room!</option>
-                        <option v-for="chatroom in chatRooms" :value="chatroom">{{chatroom}}</option>
+
+                    <span class="h6">Chat Select:</span>
+                    <select class="custom-select col-9" v-model="currentChatroom">
+                        <option v-for="chatroom in chatRooms" :value="chatroom">{{chatroom.chatroomName}}</option>
                     </select>
 
                 </div>
@@ -19,29 +20,24 @@
                 <div class="border align-items-middle">
                     <span v-if="userLoggedIn" class="ml-2 text-muted small" >Status: Logged in</span><span v-else class="ml-2 text-muted small">Status: Not logged in</span><br>
                     <span class="ml-2 text-muted small">Username: {{username}}</span><br>
-                    <span class="ml-2 text-muted small">Chatroom: {{currentChatroom}}</span><br>
-                    <span class="ml-2 text-muted small">Administator: {{admin}}</span>
+                    <span class="ml-2 text-muted small">User Type: {{userType}}</span>
                 </div> 
                 
                 <div class="modal-body">
 
-                    <div style="max-height:300px;overflow: auto;">
-                        <ul id="textChat" class="list-group list-group-flush" >
+                    <div id="textChat" style="max-height: 300px;overflow: auto;">
+                        <div class="list-group list-group-flush" >
                             <div class="container animated fadeIn border-bottom" v-for="message in messages">  
                                 <div class="row justifty-content-start mb-1 mt-1">
-                                    <span class="align-middle" :class="{ 'bg-info text-white' : message.admin }" > {{message.username}} </span>
+                                    <span class="align-middle" :class="{ 'bg-success text-white' : message.ownMessage, 'bg-info text-white' : message.admin }" > {{message.username}} </span>
                                     <span class="align-middle text-muted">: {{message.message}} </span>
                                 </div>
                             </div>
-                        
-                        </ul>
+                        </div>
                     </div><br>
 
                     <div id="messageBox">
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small align-middle" id="username_tag">{{username}}</span>
-                            </div>
                             <input v-model="messageToPost" min="0" max="30" type="text" class="form-control" placeholder="message" id="message" autocomplete="off">
                             <div class="input-group-prepend">
                                 <span class="input-group-text small align-middle">{{messageToPost.length}}/30</span>
@@ -82,4 +78,6 @@
     <!-- Load in your custom scripts -->
     <script src="<?php echo base_url("application/scripts/CustomVue.js") . "?" . time(); ?>"></script>
     <script src="<?php echo base_url("application/scripts/app.js") . "?" . time(); ?>"></script>
+    <script src="<?php echo base_url("application/scripts/ClientChatSystem.js?") . time(); ?>"></script>
+
 </html>
