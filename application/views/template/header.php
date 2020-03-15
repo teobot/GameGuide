@@ -20,7 +20,6 @@
         <link rel="stylesheet" href="<?php echo base_url("application/css/style.css?") . time() ;?>">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="<?php echo base_url("application/scripts/chat.js?") . time(); ?>"></script>
         <title>18055445-CWK</title>
 
         <nav id="navigationBar" class="navbar navbar-expand-lg navbar-<?php echo$textColor; ?> bg-<?php echo$textColor; ?>">
