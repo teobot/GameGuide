@@ -27,13 +27,6 @@ var generalMessages = [];
 
 io.on("connection", function(socket) {
     console.log("User has connected to the server!");
-    var newUserConnection = true;
-
-    if(newUserConnection) {
-        //New User connection
-        newUserConnection = false;
-        io.emit("server chatlog", generalMessages);
-    }
 
     socket.on("client chatlog request", function(chatroom, username) {
         if(chatroom == "General") {
@@ -46,7 +39,7 @@ io.on("connection", function(socket) {
     });
 
     socket.on("client message", function(username, message, chatroom, admin) {
-        console.log("Client Message received from " + username + " message: " + message + " account: " + chatroom);
+        console.log("Client Message received from " + username + " message: " + message + " chatroom: " + chatroom);
         io.emit("server message", username, message, chatroom, admin);
         if(chatroom == "General") {
             generalMessages.push({username:username,message:message,admin:admin});
