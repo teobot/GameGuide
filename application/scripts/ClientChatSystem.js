@@ -20,6 +20,26 @@ var chatSystem = new Vue({
         ]
       },
       {
+        chatroomName:"Member & Admin",
+        usersAllowed: [
+          "member",
+          "admin"
+        ]
+      },
+      {
+        chatroomName:"Anon & Admin",
+        usersAllowed: [
+          "standard",
+          "admin"
+        ]
+      },
+      {
+        chatroomName:"Anon Only",
+        usersAllowed: [
+          "standard"
+        ]
+      },
+      {
         chatroomName:"Admin Only",
         usersAllowed: [
           "admin"
@@ -43,6 +63,7 @@ var chatSystem = new Vue({
         console.log(chatlog);
         chatSystem.messages = chatlog;
         chatSystem.messages.push({ "username":"CHAT CHANGE", "message":"You have entered chatroom: " + chatSystem.currentChatroom.chatroomName, "admin":true });
+        chatSystem.ScrollToBottom();
       }      
     });
 
@@ -54,6 +75,7 @@ var chatSystem = new Vue({
               senderIsReciever = true;
             }
             chatSystem.messages.push({ "username":username, "message":message, "admin":admin, "ownMessage":senderIsReciever});
+            chatSystem.ScrollToBottom();
           }
         }    
     });
@@ -74,7 +96,6 @@ var chatSystem = new Vue({
         chatSystem.isConnected = false;
         document.getElementById("chatButton").disabled = true;
       }
-      $("#textChat").scrollTop($("#textChat")[0].scrollHeight);
     },750);
   },
   watch: {
@@ -84,6 +105,7 @@ var chatSystem = new Vue({
       } else {
         chatSystem.messages = [];
         chatSystem.messages.push({ "username":"CHAT CHANGE", "message":"You do not have access to: " + chatSystem.currentChatroom.chatroomName, "admin":true });
+        chatSystem.ScrollToBottom();
       }
     }    
   },
@@ -92,12 +114,14 @@ var chatSystem = new Vue({
       if(chatSystem.messageToPost) {
         if(chatSystem.messageToPost.length > 30) {
           chatSystem.messages.push({ "username":"ERROR", "message":"Message To Long (MAX 30 Characters)", admin:true });
+          chatSystem.ScrollToBottom();
           return;
         }
         if(chatSystem.doesUserHaveAccess()) {
           socket.emit("client message", chatSystem.username, chatSystem.messageToPost, chatSystem.currentChatroom.chatroomName, chatSystem.admin );
         } else {
           chatSystem.messages.push({ "username":"ERROR", "message":"Incorrect privileges in chatroom!", admin:true });
+          chatSystem.ScrollToBottom();
         }
         chatSystem.messageToPost = '';
       }
@@ -129,6 +153,11 @@ var chatSystem = new Vue({
       } else {
         return false;
       }     
+    },
+    ScrollToBottom:function() {
+      setTimeout(function(){
+        $("#textChat").scrollTop($("#textChat")[0].scrollHeight);
+      }, 500); 
     }
   }
 });
