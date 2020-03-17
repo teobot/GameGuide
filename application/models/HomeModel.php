@@ -9,13 +9,14 @@ class HomeModel extends CI_Model{
     //Get for all games
     public function getGame()
     {
+        //This function recreives all the game review information from the database
         $query = $this->db->query("SELECT * FROM reviews");
         return $query->result();
     }
 
-    //Get the details for a game once it has been clicked on.
     public function getReview($slug = FALSE)
     {
+        //This function returns a array of the currently selected review information
         $query = $this->db->get_where('reviews', array('slug' => $slug));
         return $query->row_array();
     }
