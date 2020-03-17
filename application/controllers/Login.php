@@ -6,19 +6,21 @@ class Login extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
-        // Consider if it would be best to autoload some of the helpers from here.
+        // Loading helpers here ...
         $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->helper('html');
         $this->load->helper('cookie');
+        // Loading helpers here ...
 
-        // Load in your Models below.
+        // Loading models here ...
         $this->load->model('LoginModel');
+        // Loading models here ...
         
     }
 
     public function notyou() {
-        //DELETE the cookies here
+        //This function deletes the cookies stored by the user, This allows users to Logout.
         delete_cookie('username');
         delete_cookie('user_id');
         redirect('Home', 'refresh');
@@ -26,6 +28,12 @@ class Login extends CI_Controller{
 
     public function index()
     {
+        // index.php/Login
+        //
+        // This function is for logging the user into the system, If the user inputs a matching username and password
+        // The User_id is stored for passing to functions and so is the username for quicker and more responsive customization.
+
+        //If the user is not logged in, then show the login screen, Other redirect them back the home page.
         if(!$this->LoginModel->userLoggedIn()) {
             //The cookie doesn't exist so they aren't logged in
             //Have they submitted values to login?
