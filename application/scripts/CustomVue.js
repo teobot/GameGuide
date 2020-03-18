@@ -1,30 +1,34 @@
 var commentElement = new Vue({
-    // Add the id here.
+    //This is the VueJs section for getting the comments from a specific review
     el: '#commentSection',
     data: {
       comments:[]
     }, 
+    //Once the element has loaded, go get the comments.
     created() {
       this.getComments();
     },   
     methods: {
+      //Get the comments by posting the slug to the getComments function that returns all the comments JSON encoded
       getComments:function()
       {
+        //Split the URL up and get the slug, ready for posting
         var pathArray = window.location.pathname.split('/');
+        //Post the slug to get the comments on the specific review
         $.get("http://localhost/PHPFrameworks/index.php/getComments",{"slug":pathArray[4]}, function(data){
-          console.log(data);
+          //Set the current comments to the returned data
           commentElement.comments = data;
         });
         
       },
       postComment:function() {
+        //This is when a user wants to post a comment onto the review
+        //serializeArray turns a form into a JSON object, Since we only have one input it returns the comment the user wants to push
         var comment = $("#postCommentForm").serializeArray();
+        //Get the slug from the URL again
         var pathArray = window.location.pathname.split('/');
-        console.log(pathArray)
 
         $.post("http://localhost/PHPFrameworks/index.php/postComment",{ "slug":pathArray[4], "comment":comment[0].value }, function(data){
-          //CLEAR THE TEXT AREA
-          console.log(data);
           //SHOW A SUBMITTED TEXT
           commentElement.getComments();
         });
@@ -33,6 +37,9 @@ var commentElement = new Vue({
 });
 
 var profile_images = new Vue({
+  //This is the profilePicture select,
+  //The images are dynamically added based on the first of images below,
+  //If you want to add a new possible profile image, add the image location down below.
   el: '#profile_image_selection',
   data: {
     images:[

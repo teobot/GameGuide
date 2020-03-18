@@ -7,6 +7,8 @@ class UserAccount extends CI_Model{
     }
 
     public function setAccountType($user_id,$accountType) {
+        //This function sets the account type using the UserID and hte account type given,
+        //Which currently is only "admin" or "" (blank)
         $data = array(
             'account_type' => $accountType,
         );
@@ -16,6 +18,7 @@ class UserAccount extends CI_Model{
     }
 
     public function isUserAdmin($user_id) {
+        //This function checks if the user from the given userID is a administrator
         $query = $this->db->get_where('users', array('user_id' => $user_id));
         $return = $query->row();
         if($return->account_type === "admin") {
@@ -26,6 +29,7 @@ class UserAccount extends CI_Model{
     }
 
     public function darkModeEnabled($user_id) {
+        //Using the given user_id this function checks wether the given user has enabled darkmode
         if(empty($user_id)) {
             return FALSE;
         } else {
@@ -40,6 +44,7 @@ class UserAccount extends CI_Model{
     }
 
     public function setProfileImage($user_id,$profileImage) {
+        //This function sets the given user from the userID profile picture
         $data = array(
             'profile_image' => $profileImage,
         );
@@ -49,6 +54,7 @@ class UserAccount extends CI_Model{
     }
 
     public function setDarkMode($user_id,$darkMode) {
+        //This function enabled or disables darkmode for the given user from the userID
         $data = array(
             'dark_mode' => $darkMode,
         );
