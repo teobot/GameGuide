@@ -1,4 +1,5 @@
 <?php
+    //
     if($darkMode) {
         $textColor = "light";
         $bgColor = "dark";
@@ -18,10 +19,11 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <link rel="stylesheet" href="<?php echo base_url("application/css/style.css?") . time() ;?>">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
+        <!-- Title -->
         <title>18055445-CWK</title>
 
+        <!-- Navigation Bar -->
         <nav id="navigationBar" class="navbar navbar-expand-lg navbar-<?php echo$textColor; ?> bg-<?php echo$textColor; ?>">
             <a class="navbar-brand">Games Review</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,30 +35,32 @@
                 </ul>
             </div>
             <span class="navbar-text">
-                <?php
-                    if( $this->input->cookie("username") ) {
-                        //User is logged In
-                        $notyou = base_url("index.php/not-you");
-                        $username = $this->input->cookie("username");
-                        $account = base_url("index.php/account");
-                        echo<<<_END
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="$account">My Account</a></li>
-                            <li class="nav-item w3-card"><div class="nav-link active">Welcome, $username!</div></li>
-                            <li class="nav-item"><small><a class="nav-link text-muted" href="$notyou">Not you?</a></small></li></ul>
+            <?php
+                //If the user is logged in then give them a different navbar, 
+                if( $this->input->cookie("username") ) {
+                    //User is logged In
+                    //Create nav links locations
+                    $notyou = base_url("index.php/not-you");
+                    $username = $this->input->cookie("username");
+                    $account = base_url("index.php/account");
+                    echo<<<_END
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="$account">My Account</a></li>
+                        <li class="nav-item w3-card"><div class="nav-link active">Welcome, $username!</div></li>
+                        <li class="nav-item"><small><a class="nav-link text-muted" href="$notyou">Not you?</a></small></li></ul>
 _END;
-                    } else {
-                        //User is not logged In
-                        $login = base_url("index.php/Login");
-                        $register = base_url("index.php/register");
-                        echo<<<_END
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="$login">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="$register">Register</a></li>
-                        </ul>
+                } else {
+                    //User is not logged In
+                    $login = base_url("index.php/Login");
+                    $register = base_url("index.php/register");
+                    echo<<<_END
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="$login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="$register">Register</a></li>
+                    </ul>
 _END;                        
-                    }
-                ?>
+                }
+            ?>
             </span> 
         </nav>
     </head>

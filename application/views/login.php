@@ -1,8 +1,10 @@
 <div class="container w3-card"><br>
     <h1 class="display-4">Login</h1>
+    <!-- Display any errors here if needed -->
     <?php
         echo $err;
     ?>
+    <!-- Form for logging into the system Start -->
     <form action="" method="post" class="container">
         <div class="form-group">
             <label >Username</label>
