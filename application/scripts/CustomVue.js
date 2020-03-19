@@ -25,7 +25,7 @@ var commentElement = new Vue({
         //This is when a user wants to post a comment onto the review
         //serializeArray turns a form into a JSON object, Since we only have one input it returns the comment the user wants to push
         var comment = $("#postCommentForm").serializeArray();
-        //Get the slug from the URL again
+        //Get the slug from the URL
         var pathArray = window.location.pathname.split('/');
 
         $.post("http://localhost/PHPFrameworks/index.php/postComment",{ "slug":pathArray[4], "comment":comment[0].value }, function(data){
