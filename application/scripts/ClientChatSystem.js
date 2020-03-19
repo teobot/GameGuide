@@ -127,6 +127,8 @@ var chatSystem = new Vue({
       if(chatSystem.doesUserHaveAccess()) { 
         //If the user does have access, then send off for a chatlog
         socket.emit("client chatlog request", chatSystem.currentChatroom.chatroomName, chatSystem.username );
+        socket.emit("client message", chatSystem.username, "Has Joined the Chatroom", chatSystem.currentChatroom.chatroomName, false );
+        socket.emit("client message", chatSystem.username, "Has Left the Chatroom", oldVal.chatroomName, false );
       } else {
         //If the user doesn't have access then remove any messages and send a "no access" message.
         chatSystem.messages = [];
