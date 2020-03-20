@@ -6,7 +6,7 @@
 #    1. Import the database located in "PHPFramework/application/SQL/18055445gamesreview.sql",
 #    2. Start the webserver location at "PHPFramework/webserver/server.js",
 #    3. Log in using username: "john" ; password: "henry,
-#    4. Base_url is 'http://localhost/PHPFrameworks', So adjust folder location to reflect url.
+#    4. Base_url is 'http://localhost/PHPFrameworks', So adjust folder location to reflect url, no port is used!
 
 ### Models
     ## CommentModel
