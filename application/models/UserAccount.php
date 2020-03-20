@@ -7,7 +7,7 @@ class UserAccount extends CI_Model{
     }
 
     public function setAccountType($user_id,$accountType) {
-        //This function sets the account type using the UserID and hte account type given,
+        //This function sets the account type using the UserID and the account type given,
         //Which currently is only "admin" or "" (blank)
         $data = array(
             'account_type' => $accountType,

@@ -130,7 +130,7 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'bonfirepass', 'pass', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, 'admin');
-INSERT INTO `users` VALUES (2, 'john', 'henry', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
+INSERT INTO `users` VALUES (2, 'john', 'henry', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, 'admin');
 INSERT INTO `users` VALUES (3, 'gg', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
 INSERT INTO `users` VALUES (4, 'ggg', 'ggg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
 INSERT INTO `users` VALUES (5, 'bonfire2', 'gg', 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg', 0, '');
