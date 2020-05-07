@@ -8,17 +8,17 @@
 3. Log in using username: "john" ; password: "henry,
 4. Base_url is 'http://localhost/PHPFrameworks', So adjust folder location to reflect url, no port is used!
 
-### Models
+# Models
 ## CommentModel
-# getComments // returns the comments of a review
-# postComment // posts a comment on a review to the database
+### getComments // returns the comments of a review
+### postComment // posts a comment on a review to the database
 ## HomeModel
-# getGame // returns a array of the current game review from the database
-# getReview // returns the data from a specific review based on the slug
+### getGame // returns a array of the current game review from the database
+### getReview // returns the data from a specific review based on the slug
 ## LoginModel
-# userExists // takes a username and password, to check if a user userExists
-# userLoggedIn // returns true if the user is logged in, else false
-# insertNewUser // takes a username and password, and creates a user in the database
+### userExists // takes a username and password, to check if a user userExists
+### userLoggedIn // returns true if the user is logged in, else false
+### insertNewUser // takes a username and password, and creates a user in the database
 # getAccount // returns the user information based on the given userID
 # usernameTaken // returns true if the given username is already taken
 # updateUserDetails // updates the given userID with the provided username and password
