@@ -11,7 +11,7 @@
 # Models
 ## CommentModel
 - getComments 
-- - > returns the comments of a review
+    > returns the comments of a review
 - postComment > posts a comment on a review to the database
 
 ## HomeModel
