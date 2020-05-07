@@ -32,7 +32,7 @@
   - >  setProfileImage // sets the profile image for the given userID
   - >  setDarkMode // enables or disables darkMode for the given userID
 
-## Views
+# Views
   - >  header // displays the navbar, imports styling scripts
   - >  footer // displays the chatModel, imports custom JS scripts
   - >  account // View for the account page information
