@@ -10,9 +10,8 @@
 
 # Models
 ## CommentModel
-- getComments 
-  - > returns the comments of a review
-  - >  postComment > posts a comment on a review to the database
+  - > getComments returns the comments of a review
+  - >  postComment // posts a comment on a review to the database
 
 ## HomeModel
   - > getGame // returns a array of the current game review from the database
