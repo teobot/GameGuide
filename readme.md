@@ -7,7 +7,7 @@ A game review service written using CodeIgniter.
 *Style Guide*: **Prettier**  
 *Linter*: **ESlint**  
 *Version*: **`1.0.0`**  
-*Github Repo Link*: ***[Github Link][https://github.com/teobot/GameGuide]***  
+*Github Repo Link*: ***[Github Link](https://github.com/teobot/GameGuide)***  
 
 ## Table of Contents
 - [GameGuide](#gameguide)
