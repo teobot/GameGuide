@@ -1,6 +1,8 @@
 # GameGuide
 A game review service written using CodeIgniter.
 
+![Image of the title](https://raw.githubusercontent.com/teobot/GameGuide/master/GameGuide-min.png)
+
 ## Table of Contents
 - [GameGuide](#gameguide)
   - [Introduction](#introduction)
