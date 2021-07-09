@@ -1,7 +1,8 @@
-# Frameworks - CodeIgniter
+# GameGuide
+A game review service written using CodeIgniter.
 
 ## Table of Contents
-- [Frameworks - CodeIgniter](#frameworks---codeigniter)
+- [GameGuide](#gameguide)
   - [Introduction](#introduction)
     - [What is this project?](#what-is-this-project)
     - [What grade did you get? - **✨100%✨**](#what-grade-did-you-get---100)
@@ -9,6 +10,7 @@
   - [Usage](#usage)
     - [Getting started](#getting-started)
     - [Logging In](#logging-in)
+  - [What does it look like?](#what-does-it-look-like)
   - [Models, Views and Controllers](#models-views-and-controllers)
     - [Models](#models)
       - [CommentModel](#commentmodel)
@@ -38,6 +40,7 @@ I got **✨100%✨**, I put a lot of effort and time into this project and I bel
 Before running the problem follow the following steps
 1. Import the database located in `/application/SQL/18055445gamesreview.sql`,
 2. Start the node webserver location at `/webserver/server.js`,
+   - Using the `node server.js` command
 3. The `base_url` is `http://localhost/PHPFrameworks` in `/application/config/config/config.php`
     - If you are using a different hostname or folder name you will need to change this.
 
@@ -45,6 +48,9 @@ Before running the problem follow the following steps
 You can log into the system using the following profile
 - username: `john`
 - password: `henry`
+
+
+## What does it look like?
 
 
 ## Models, Views and Controllers
