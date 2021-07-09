@@ -3,6 +3,12 @@ A game review service written using CodeIgniter.
 
 ![Image of the title](https://raw.githubusercontent.com/teobot/GameGuide/master/GameGuide-min.png)
 
+*Written In*: **PHP CodeIgnitor, Node.JS, MYSQL**  
+*Style Guide*: **Prettier**  
+*Linter*: **ESlint**  
+*Version*: **`1.0.0`**  
+*Github Repo Link*: ***[Github Link][https://github.com/teobot/GameGuide]***  
+
 ## Table of Contents
 - [GameGuide](#gameguide)
   - [Introduction](#introduction)
