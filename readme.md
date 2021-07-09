@@ -3,7 +3,7 @@ A game review service written using CodeIgniter.
 
 ![Image of the title](https://raw.githubusercontent.com/teobot/GameGuide/master/GameGuide-min.png)
 
-*Written In*: **PHP CodeIgnitor, Node.JS, MYSQL**  
+*Written In*: **PHP CodeIgniter, Node.JS, MYSQL**  
 *Style Guide*: **Prettier**  
 *Linter*: **ESlint**  
 *Version*: **`1.0.0`**  
@@ -34,7 +34,7 @@ A game review service written using CodeIgniter.
 
 ## Introduction
 ### What is this project?
-This project is a computer game review website. This project uses the PHP language more specifically the PHP framework called CodeIgnitor and follows the MVC framework. It also includes a Node.Js server that allows users to chat to each other in real time.
+This project is a computer game review website. This project uses the PHP language more specifically the PHP framework called CodeIgniter and follows the MVC framework. It also includes a Node.Js server that allows users to chat to each other in real time.
 
 ### What grade did you get? - **✨100%✨**
 I got **✨100%✨**, I put a lot of effort and time into this project and I believe it came out really well.
