@@ -18,7 +18,6 @@ A game review service written using CodeIgniter.
   - [Usage](#usage)
     - [Getting started](#getting-started)
     - [Logging In](#logging-in)
-  - [What does it look like?](#what-does-it-look-like)
   - [Models, Views and Controllers](#models-views-and-controllers)
     - [Models](#models)
       - [CommentModel](#commentmodel)
@@ -56,9 +55,6 @@ Before running the problem follow the following steps
 You can log into the system using the following profile
 - username: `john`
 - password: `henry`
-
-
-## What does it look like?
 
 
 ## Models, Views and Controllers
